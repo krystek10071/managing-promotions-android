@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">managingPromotions</string>
+    <string name="form">Dodaj listę zakupów</string>
+    <string name="AddGroceryButton">Dodaj listę zakupów</string>
+    <string name="AddProductButton">Dodaj Product</string>
+    <string name="write_name_product">Wpisz nazwę produktu</string>
+    <string name="input_amount">ilość</string>
+    <string name="save">Zapisz</string>
+    <string name="input_grocery_list_name">Nazwa listy zakupów</string>
+</resources>
