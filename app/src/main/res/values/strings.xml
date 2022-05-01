@@ -7,4 +7,10 @@
     <string name="input_amount">ilość</string>
     <string name="save">Zapisz</string>
     <string name="input_grocery_list_name">Nazwa listy zakupów</string>
+    <string name="added_grocery_list_button">Dodane listy zakupów</string>
+    <string name="GroceryLists">Listy zakupów</string>
+    <string name="findProducts">Produkty</string>
+    <string name="bestShop">Najtańsy sklep</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
