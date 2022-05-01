@@ -1,16 +1,14 @@
 package com.example.managingpromotions.addGrocery.presenter;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.example.managingpromotions.addGrocery.activity.AddGroceryListActivityView;
 import com.example.managingpromotions.addGrocery.model.CreateIdResponseDTO;
 import com.example.managingpromotions.addGrocery.model.GroceryListDTO;
-import com.example.managingpromotions.addGrocery.model.GroceryListResponseDTO;
 import com.example.managingpromotions.network.APIClient;
 import com.example.managingpromotions.network.GroceryListAPI;
 
-import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,8 +16,7 @@ import retrofit2.Response;
 
 public class AddGroceryPresenterImpl {
 
-    private AddGroceryListActivityView addGroceryListActivityView;
-    private GroceryListAPI groceryListAPI;
+    private final AddGroceryListActivityView addGroceryListActivityView;
 
 
     public AddGroceryPresenterImpl(AddGroceryListActivityView addGroceryListActivityView) {
@@ -28,7 +25,7 @@ public class AddGroceryPresenterImpl {
 
     public void saveGroceryList(GroceryListDTO groceryListDTO) {
 
-        groceryListAPI = APIClient.getClient().create(GroceryListAPI.class);
+        GroceryListAPI groceryListAPI = APIClient.getClient().create(GroceryListAPI.class);
         //todo implement get UserNameFromToken
         groceryListDTO.setUserLogin("kris");
 
@@ -37,13 +34,17 @@ public class AddGroceryPresenterImpl {
         callAddGroceryList.enqueue(new Callback<CreateIdResponseDTO>() {
             @Override
             public void onResponse(Call<CreateIdResponseDTO> call, Response<CreateIdResponseDTO> response) {
-                if (!response.isSuccessful()){
+                if (!response.isSuccessful()) {
 
                     String errorMassage = "ERROR HTTP CODE: " + response.code();
                     Log.i("ERROR", errorMassage);
                     addGroceryListActivityView.displayMessage(errorMassage);
-                }else {
+                } else {
                     CreateIdResponseDTO createIdResponseDTO = response.body();
+                    String message = "Pomyślnie dodano nową listę zakupów o id: " +
+                            Objects.requireNonNull(createIdResponseDTO).getId();
+
+                    addGroceryListActivityView.displayMessage(message);
                 }
             }
 

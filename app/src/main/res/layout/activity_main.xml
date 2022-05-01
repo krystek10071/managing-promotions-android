@@ -19,10 +19,20 @@
         android:id="@+id/addGroceryList"
         android:layout_width="181dp"
         android:layout_height="61dp"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="16dp"
         android:text="@string/AddGroceryButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addedGroceryListButton"
+        android:layout_width="162dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="60dp"
+        android:text="@string/added_grocery_list_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addGroceryList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

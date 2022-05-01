@@ -13,7 +13,6 @@ import com.example.managingpromotions.R;
 import com.example.managingpromotions.addGrocery.model.GroceryListDTO;
 import com.example.managingpromotions.addGrocery.model.GroceryListProductDTO;
 import com.example.managingpromotions.addGrocery.presenter.AddGroceryPresenterImpl;
-import com.example.managingpromotions.network.APIClient;
 import com.example.managingpromotions.network.GroceryListAPI;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -42,7 +41,6 @@ public class AddGroceryListActivityView extends AppCompatActivity {
         initPresenter();
 
 
-
         groceryListProductsAdapter = new GroceryListProductsAdapter(productDTOS, this);
 
         recyclerView.setAdapter(groceryListProductsAdapter);
@@ -61,7 +59,7 @@ public class AddGroceryListActivityView extends AppCompatActivity {
 
             productDTOS.add(groceryListProductDTO);
 
-            groceryListProductsAdapter.notifyItemChanged(productDTOS.size()-1);
+            groceryListProductsAdapter.notifyItemChanged(productDTOS.size() - 1);
         });
 
         saveGroceryListButton.setOnClickListener(view -> {
@@ -95,7 +93,7 @@ public class AddGroceryListActivityView extends AppCompatActivity {
         return groceryListDTO;
     }
 
-    public void displayMessage(String errorMassage) {
-        Toast.makeText(this, errorMassage, Toast.LENGTH_LONG).show();
+    public void displayMessage(String massage) {
+        Toast.makeText(this, massage, Toast.LENGTH_LONG).show();
     }
 }
