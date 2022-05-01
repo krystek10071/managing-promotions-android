@@ -16,7 +16,7 @@
             app:layout_scrollFlags="scroll|enterAlways" />
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
+            android:id="@+id/tabsCheapestShoppingActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
 
         android:layout_height="match_parent"
+        android:contentDescription="@string/AddGroceryButton"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,6 +55,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/cheapestShoppingViewPager"
         android:layout_width="match_parent"
         android:layout_height="627dp"
         app:layout_anchor="@+id/nestedScrollView"

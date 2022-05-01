@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.managingpromotions.addGrocery.activity.AddGroceryListActivityView;
+import com.example.managingpromotions.cheapestShopping.CheapestShoppingActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button addGroceryList;
+    private Button addGroceryList, cheapestShoppingButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,15 @@ public class MainActivity extends AppCompatActivity {
             Intent addGroceryListIntent = new Intent(this, AddGroceryListActivityView.class);
             startActivity(addGroceryListIntent);
         });
+
+        cheapestShoppingButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CheapestShoppingActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void initComponents() {
         addGroceryList = findViewById(R.id.addGroceryList);
+        cheapestShoppingButton = findViewById(R.id.cheapestShoppingButton);
     }
 }

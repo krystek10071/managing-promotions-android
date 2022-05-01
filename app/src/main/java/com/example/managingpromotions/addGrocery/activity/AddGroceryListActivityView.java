@@ -24,7 +24,6 @@ public class AddGroceryListActivityView extends AppCompatActivity {
 
     private final List<GroceryListProductDTO> productDTOS = new ArrayList<>();
 
-
     private TextInputEditText inputNameProduct, inputAmount, inputGroceryListName;
     private GroceryListProductsAdapter groceryListProductsAdapter;
     private RecyclerView recyclerView;
