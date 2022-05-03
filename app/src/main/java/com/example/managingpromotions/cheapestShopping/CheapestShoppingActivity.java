@@ -1,16 +1,11 @@
 package com.example.managingpromotions.cheapestShopping;
 
 import android.os.Bundle;
-import android.widget.TableLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
-import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.managingpromotions.R;
@@ -19,6 +14,9 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class CheapestShoppingActivity extends AppCompatActivity {
+
+    @StringRes
+    private static final int[] TAB_TITLES = new int[]{R.string.tab_text_1, R.string.tab_text_2, R.string.tab_text_3};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,11 +28,16 @@ public class CheapestShoppingActivity extends AppCompatActivity {
 
         TabLayout sampleTabLayout = findViewById(R.id.tabsCheapestShoppingActivity);
 
-/*        //create mediator
+        //create mediator
         new TabLayoutMediator(
                 sampleTabLayout,
                 viewPager2,
-                TabLayout.Tab::
-        );*/
+                new TabLayoutMediator.TabConfigurationStrategy() {
+                    @Override
+                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                        tab.setText(TAB_TITLES[position]);
+                    }
+                }
+        ).attach();
     }
 }

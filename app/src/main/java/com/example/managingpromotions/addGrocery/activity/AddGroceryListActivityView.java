@@ -71,7 +71,7 @@ public class AddGroceryListActivityView extends AppCompatActivity {
     }
 
     private void initComponents() {
-        recyclerView = findViewById(R.id.rvGroceryList);
+        recyclerView = findViewById(R.id.fragment_grocery_list_rv);
         inputNameProduct = findViewById(R.id.input_name_product);
         inputAmount = findViewById(R.id.input_amount);
         addGroceryRowButton = findViewById(R.id.add_product_button);

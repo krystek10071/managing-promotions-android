@@ -4,15 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
 
 public class GroceryListFragment extends Fragment {
 
-    TextView testTextViewTab1;
+    private RecyclerView recyclerView;
 
     private final String title;
 
@@ -24,11 +24,13 @@ public class GroceryListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_grocery_list, container, false);
+        init(rootView);
 
-        testTextViewTab1 = rootView.findViewById(R.id.textViewTab1);
-
-        testTextViewTab1.setText(title);
 
         return rootView;
+    }
+
+    private void init(View view) {
+        recyclerView = view.findViewById(R.id.fragment_grocery_list_rv);
     }
 }

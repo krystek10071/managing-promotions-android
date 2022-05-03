@@ -26,7 +26,6 @@ public class ViewPageAdapter extends FragmentStateAdapter {
     }
 
 
-
     @NonNull
     @Override
     public Fragment createFragment(int position) {
@@ -54,6 +53,6 @@ public class ViewPageAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 3;
     }
 }

@@ -13,4 +13,9 @@
     <string name="bestShop">Najtańsy sklep</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_1">Listy zakupów</string>
+    <string name="tab_text_2">Produkty</string>
+    <string name="tab_text_3">Najtańszy sklep</string>
+    <string name="name_grocery_list">nazwa listy zakupów</string>
+    <string name="addedDate">Data dodania</string>
 </resources>
