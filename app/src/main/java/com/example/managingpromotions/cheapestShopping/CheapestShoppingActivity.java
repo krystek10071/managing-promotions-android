@@ -2,7 +2,6 @@ package com.example.managingpromotions.cheapestShopping;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,12 +31,7 @@ public class CheapestShoppingActivity extends AppCompatActivity {
         new TabLayoutMediator(
                 sampleTabLayout,
                 viewPager2,
-                new TabLayoutMediator.TabConfigurationStrategy() {
-                    @Override
-                    public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText(TAB_TITLES[position]);
-                    }
-                }
+                (tab, position) -> tab.setText(TAB_TITLES[position])
         ).attach();
     }
 }

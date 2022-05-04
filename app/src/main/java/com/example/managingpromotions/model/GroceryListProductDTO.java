@@ -1,6 +1,5 @@
-package com.example.managingpromotions.addGrocery.model;
+package com.example.managingpromotions.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;

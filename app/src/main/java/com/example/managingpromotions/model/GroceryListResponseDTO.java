@@ -1,8 +1,10 @@
-package com.example.managingpromotions.addGrocery.model;
+package com.example.managingpromotions.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,21 +12,19 @@ import javax.validation.Valid;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class GroceryListDTO {
+public class GroceryListResponseDTO implements Serializable {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("userLogin")
-    private String userLogin;
+    @JsonProperty("createDate")
+    private Date createDate;
+
+    @JsonProperty("modifyDate")
+    private Date modifyDate;
 
     @JsonProperty("products")
     @Valid
     private List<GroceryListProductDTO> products = null;
-
-    public GroceryListDTO name(String name) {
-        this.name = name;
-        return this;
-    }
 
     /**
      * Get name
@@ -41,32 +41,54 @@ public class GroceryListDTO {
         this.name = name;
     }
 
-    public GroceryListDTO userLogin(String userLogin) {
-        this.userLogin = userLogin;
+    public GroceryListResponseDTO createDate(Date createDate) {
+        this.createDate = createDate;
         return this;
     }
 
     /**
-     * Get userLogin
-     * @return userLogin
+     * Get createDate
+     * @return createDate
      */
     @ApiModelProperty(value = "")
 
+    @Valid
 
-    public String getUserLogin() {
-        return userLogin;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
-    public GroceryListDTO products(List<GroceryListProductDTO> products) {
+    public GroceryListResponseDTO modifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+        return this;
+    }
+
+    /**
+     * Get modifyDate
+     * @return modifyDate
+     */
+    @ApiModelProperty(value = "")
+
+    @Valid
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
+
+    public GroceryListResponseDTO products(List<GroceryListProductDTO> products) {
         this.products = products;
         return this;
     }
 
-    public GroceryListDTO addProductsItem(GroceryListProductDTO productsItem) {
+    public GroceryListResponseDTO addProductsItem(GroceryListProductDTO productsItem) {
         if (this.products == null) {
             this.products = new ArrayList<GroceryListProductDTO>();
         }
@@ -99,24 +121,26 @@ public class GroceryListDTO {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        GroceryListDTO groceryListDTO = (GroceryListDTO) o;
-        return Objects.equals(this.name, groceryListDTO.name) &&
-                Objects.equals(this.userLogin, groceryListDTO.userLogin) &&
-                Objects.equals(this.products, groceryListDTO.products);
+        GroceryListResponseDTO groceryListResponseDTO = (GroceryListResponseDTO) o;
+        return Objects.equals(this.name, groceryListResponseDTO.name) &&
+                Objects.equals(this.createDate, groceryListResponseDTO.createDate) &&
+                Objects.equals(this.modifyDate, groceryListResponseDTO.modifyDate) &&
+                Objects.equals(this.products, groceryListResponseDTO.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, userLogin, products);
+        return Objects.hash(name, createDate, modifyDate, products);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("class GroceryListRequestDTO {\n");
+        sb.append("class GroceryListResponseDTO {\n");
 
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
-        sb.append("    userLogin: ").append(toIndentedString(userLogin)).append("\n");
+        sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
+        sb.append("    modifyDate: ").append(toIndentedString(modifyDate)).append("\n");
         sb.append("    products: ").append(toIndentedString(products)).append("\n");
         sb.append("}");
         return sb.toString();

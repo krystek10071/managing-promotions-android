@@ -4,20 +4,28 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
+import com.example.managingpromotions.cheapestShopping.presenter.GroceryListPresenterImpl;
+import com.example.managingpromotions.model.GroceryListResponseDTO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroceryListFragment extends Fragment {
 
     private RecyclerView recyclerView;
-
-    private final String title;
+    private GroceryListAdapter groceryListAdapter;
+    private GroceryListPresenterImpl groceryListPresenter;
+    private List<GroceryListResponseDTO> groceryListResponseDTOList;
 
     public GroceryListFragment() {
-        this.title = "Tab1";
+
     }
 
     @Override
@@ -25,12 +33,37 @@ public class GroceryListFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_grocery_list, container, false);
         init(rootView);
+        groceryListPresenter = new GroceryListPresenterImpl(this);
 
+        groceryListPresenter.getGroceryLists();
+
+        groceryListAdapter = new GroceryListAdapter(rootView.getContext(), groceryListResponseDTOList);
+        recyclerView.setAdapter(groceryListAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
         return rootView;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        //set Grocery List elements
+        groceryListPresenter.getGroceryLists();
+    }
+
     private void init(View view) {
+        groceryListResponseDTOList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.fragment_grocery_list_rv);
+    }
+
+    public void displayMessage(String message) {
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show();
+    }
+
+    public void setRecyclerView(List<GroceryListResponseDTO> groceryListResponseDTOS) {
+
+        groceryListResponseDTOList.addAll(groceryListResponseDTOS);
+        groceryListAdapter.notifyItemChanged(groceryListResponseDTOS.size());
     }
 }

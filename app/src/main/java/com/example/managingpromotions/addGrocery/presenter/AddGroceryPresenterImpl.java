@@ -3,8 +3,8 @@ package com.example.managingpromotions.addGrocery.presenter;
 import android.util.Log;
 
 import com.example.managingpromotions.addGrocery.activity.AddGroceryListActivityView;
-import com.example.managingpromotions.addGrocery.model.CreateIdResponseDTO;
-import com.example.managingpromotions.addGrocery.model.GroceryListDTO;
+import com.example.managingpromotions.model.CreateIdResponseDTO;
+import com.example.managingpromotions.model.GroceryListDTO;
 import com.example.managingpromotions.network.APIClient;
 import com.example.managingpromotions.network.GroceryListAPI;
 

@@ -16,7 +16,7 @@ public class APIClient {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
         return new Retrofit.Builder()
-                .baseUrl("http://172.21.224.1:8080/")
+                .baseUrl("http://172.18.224.1:8080")
                 .addConverterFactory(JacksonConverterFactory.create())
                 //   .client(client)
                 .build();

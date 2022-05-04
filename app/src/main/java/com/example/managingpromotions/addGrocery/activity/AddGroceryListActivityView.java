@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
-import com.example.managingpromotions.addGrocery.model.GroceryListDTO;
-import com.example.managingpromotions.addGrocery.model.GroceryListProductDTO;
 import com.example.managingpromotions.addGrocery.presenter.AddGroceryPresenterImpl;
+import com.example.managingpromotions.model.GroceryListDTO;
+import com.example.managingpromotions.model.GroceryListProductDTO;
 import com.example.managingpromotions.network.GroceryListAPI;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -38,7 +38,6 @@ public class AddGroceryListActivityView extends AppCompatActivity {
         setContentView(R.layout.add_grocery_list_form);
         initComponents();
         initPresenter();
-
 
         groceryListProductsAdapter = new GroceryListProductsAdapter(productDTOS, this);
 
