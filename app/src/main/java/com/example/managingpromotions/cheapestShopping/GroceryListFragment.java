@@ -24,6 +24,9 @@ public class GroceryListFragment extends Fragment {
     private GroceryListPresenterImpl groceryListPresenter;
     private List<GroceryListResponseDTO> groceryListResponseDTOList;
 
+    //todo
+    private List<Boolean> checkBoxStateArray;
+
     public GroceryListFragment() {
 
     }
@@ -36,8 +39,9 @@ public class GroceryListFragment extends Fragment {
         groceryListPresenter = new GroceryListPresenterImpl(this);
 
         groceryListPresenter.getGroceryLists();
+        checkBoxStateArray = new ArrayList<>(groceryListResponseDTOList.size());
 
-        groceryListAdapter = new GroceryListAdapter(rootView.getContext(), groceryListResponseDTOList);
+        groceryListAdapter = new GroceryListAdapter(rootView.getContext(), groceryListResponseDTOList, checkBoxStateArray);
         recyclerView.setAdapter(groceryListAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
 
@@ -64,6 +68,12 @@ public class GroceryListFragment extends Fragment {
     public void setRecyclerView(List<GroceryListResponseDTO> groceryListResponseDTOS) {
 
         groceryListResponseDTOList.addAll(groceryListResponseDTOS);
+
+        //todo
+        groceryListResponseDTOS.forEach(groceryListResponseDTO -> {
+            checkBoxStateArray.add(false);
+        });
+
         groceryListAdapter.notifyItemChanged(groceryListResponseDTOS.size());
     }
 }

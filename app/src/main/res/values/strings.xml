@@ -18,4 +18,5 @@
     <string name="tab_text_3">Najtańszy sklep</string>
     <string name="name_grocery_list">nazwa listy zakupów</string>
     <string name="addedDate">Data dodania</string>
+    <string name="select">Zaznacz</string>
 </resources>
