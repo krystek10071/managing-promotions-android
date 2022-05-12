@@ -23,8 +23,6 @@ public class GroceryListFragment extends Fragment {
     private GroceryListAdapter groceryListAdapter;
     private GroceryListPresenterImpl groceryListPresenter;
     private List<GroceryListResponseDTO> groceryListResponseDTOList;
-
-    //todo
     private List<Boolean> checkBoxStateArray;
 
     public GroceryListFragment() {
@@ -69,7 +67,6 @@ public class GroceryListFragment extends Fragment {
 
         groceryListResponseDTOList.addAll(groceryListResponseDTOS);
 
-        //todo
         groceryListResponseDTOS.forEach(groceryListResponseDTO -> {
             checkBoxStateArray.add(false);
         });

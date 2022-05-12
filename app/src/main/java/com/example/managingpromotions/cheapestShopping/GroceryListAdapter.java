@@ -13,13 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.managingpromotions.R;
 import com.example.managingpromotions.model.GroceryListResponseDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.GroceryHolder> {
 
-    private  Context context;
-    private  List<GroceryListResponseDTO> groceryListResponseDTOS;
+    private Context context;
+    private List<GroceryListResponseDTO> groceryListResponseDTOS;
     //todo test
     private List<Boolean> checkBoxStateArray;
 
@@ -45,15 +44,11 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
         holder.textViewGroceryName.setText(groceryListResponseDTOS.get(position).getName());
         holder.textViewAddedData.setText(groceryListResponseDTOS.get(position).getCreateDate().toString());
 
-        //check status checkbox
-        holder.checkBox.setChecked(!checkBoxStateArray.get(position));
-
         holder.checkBox.setOnClickListener(view -> {
-            if(checkBoxStateArray.get(position)){
+            if (checkBoxStateArray.get(position)) {
                 holder.checkBox.setChecked(false);
                 checkBoxStateArray.set(position, false);
-            }else
-            {
+            } else {
                 holder.checkBox.setChecked(true);
                 checkBoxStateArray.set(position, true);
             }
