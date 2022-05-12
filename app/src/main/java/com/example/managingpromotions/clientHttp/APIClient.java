@@ -1,4 +1,4 @@
-package com.example.managingpromotions.network;
+package com.example.managingpromotions.clientHttp;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

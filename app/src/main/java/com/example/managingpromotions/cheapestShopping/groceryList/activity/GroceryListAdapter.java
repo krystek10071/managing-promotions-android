@@ -1,4 +1,4 @@
-package com.example.managingpromotions.cheapestShopping;
+package com.example.managingpromotions.cheapestShopping.groceryList.activity;
 
 import android.content.Context;
 import android.view.LayoutInflater;

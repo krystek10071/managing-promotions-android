@@ -1,11 +1,11 @@
-package com.example.managingpromotions.cheapestShopping.presenter;
+package com.example.managingpromotions.cheapestShopping.groceryList.presenter;
 
 import android.util.Log;
 
-import com.example.managingpromotions.cheapestShopping.GroceryListFragment;
+import com.example.managingpromotions.cheapestShopping.groceryList.activity.CheapestShoppingActivity;
 import com.example.managingpromotions.model.GroceryListResponseDTO;
-import com.example.managingpromotions.network.APIClient;
-import com.example.managingpromotions.network.GroceryListAPI;
+import com.example.managingpromotions.clientHttp.APIClient;
+import com.example.managingpromotions.clientHttp.GroceryListAPI;
 
 import java.util.List;
 
@@ -15,15 +15,15 @@ import retrofit2.Response;
 
 public class GroceryListPresenterImpl {
 
-    private final GroceryListFragment groceryListFragment;
+    private final CheapestShoppingActivity cheapestShoppingActivity;
     private final GroceryListAPI groceryListAPI;
 
-    public GroceryListPresenterImpl(GroceryListFragment groceryListFragment) {
-        this.groceryListFragment = groceryListFragment;
+    public GroceryListPresenterImpl(CheapestShoppingActivity cheapestShoppingActivity) {
+        this.cheapestShoppingActivity = cheapestShoppingActivity;
         this.groceryListAPI = APIClient.getClient().create(GroceryListAPI.class);
     }
 
-    public void getGroceryLists(){
+    public void getGroceryLists() {
 
         Call<List<GroceryListResponseDTO>> getGroceryList = groceryListAPI.getGroceryLists();
 
@@ -32,19 +32,18 @@ public class GroceryListPresenterImpl {
             public void onResponse(Call<List<GroceryListResponseDTO>> call,
                                    Response<List<GroceryListResponseDTO>> response) {
 
-                if(!response.isSuccessful()){
+                if (!response.isSuccessful()) {
 
                     String errorMassage = "ERROR HTTP CODE: " + response.code();
                     Log.i("ERROR", errorMassage);
-                    groceryListFragment.displayMessage(errorMassage);
-                }else{
-                    if(response.body() != null){
-                        groceryListFragment.setRecyclerView(response.body());
-                    }
-                    else {
+                    cheapestShoppingActivity.displayMessage(errorMassage);
+                } else {
+                    if (response.body() != null) {
+                        cheapestShoppingActivity.setRecyclerView(response.body());
+                    } else {
                         String message = "Value body is null";
                         Log.i("ERROR", message);
-                        groceryListFragment.displayMessage(message);
+                        cheapestShoppingActivity.displayMessage(message);
                     }
                 }
             }

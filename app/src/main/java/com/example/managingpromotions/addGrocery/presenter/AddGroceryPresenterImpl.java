@@ -5,8 +5,8 @@ import android.util.Log;
 import com.example.managingpromotions.addGrocery.activity.AddGroceryListActivityView;
 import com.example.managingpromotions.model.CreateIdResponseDTO;
 import com.example.managingpromotions.model.GroceryListDTO;
-import com.example.managingpromotions.network.APIClient;
-import com.example.managingpromotions.network.GroceryListAPI;
+import com.example.managingpromotions.clientHttp.APIClient;
+import com.example.managingpromotions.clientHttp.GroceryListAPI;
 
 import java.util.Objects;
 

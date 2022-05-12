@@ -1,66 +1,69 @@
-package com.example.managingpromotions.cheapestShopping;
+package com.example.managingpromotions.cheapestShopping.groceryList.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
-import com.example.managingpromotions.cheapestShopping.presenter.GroceryListPresenterImpl;
+import com.example.managingpromotions.cheapestShopping.groceryList.presenter.GroceryListPresenterImpl;
+import com.example.managingpromotions.cheapestShopping.productsFromShop.activity.ProductsFromShopActivity;
 import com.example.managingpromotions.model.GroceryListResponseDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroceryListFragment extends Fragment {
+public class CheapestShoppingActivity extends AppCompatActivity {
 
+    private Button buttonNext;
     private RecyclerView recyclerView;
     private GroceryListAdapter groceryListAdapter;
     private GroceryListPresenterImpl groceryListPresenter;
     private List<GroceryListResponseDTO> groceryListResponseDTOList;
     private List<Boolean> checkBoxStateArray;
 
-    public GroceryListFragment() {
-
-    }
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_grocery_list, container, false);
-        init(rootView);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.grocery_list_activity);
+
+        init();
+
         groceryListPresenter = new GroceryListPresenterImpl(this);
 
         groceryListPresenter.getGroceryLists();
         checkBoxStateArray = new ArrayList<>(groceryListResponseDTOList.size());
 
-        groceryListAdapter = new GroceryListAdapter(rootView.getContext(), groceryListResponseDTOList, checkBoxStateArray);
+        groceryListAdapter = new GroceryListAdapter(this, groceryListResponseDTOList, checkBoxStateArray);
         recyclerView.setAdapter(groceryListAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
-
-        return rootView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
-    public void onResume() {
+    protected void onResume() {
         super.onResume();
-
         //set Grocery List elements
         groceryListPresenter.getGroceryLists();
+
+        buttonNext.setOnClickListener(view -> {
+            Intent intent = new Intent(this, ProductsFromShopActivity.class);
+            startActivity(intent);
+        });
     }
 
-    private void init(View view) {
+    private void init() {
         groceryListResponseDTOList = new ArrayList<>();
-        recyclerView = view.findViewById(R.id.fragment_grocery_list_rv);
+        recyclerView = findViewById(R.id.fragment_grocery_list_rv);
+        buttonNext = findViewById(R.id.nextButton);
     }
 
     public void displayMessage(String message) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     public void setRecyclerView(List<GroceryListResponseDTO> groceryListResponseDTOS) {

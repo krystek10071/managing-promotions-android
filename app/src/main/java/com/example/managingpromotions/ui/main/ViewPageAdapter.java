@@ -1,3 +1,4 @@
+/*
 package com.example.managingpromotions.ui.main;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,7 @@ public class ViewPageAdapter extends FragmentStateAdapter {
         // Return a PlaceholderFragment (defined as a static inner class below).
         Fragment fragment = null;
 
-        switch (position){
+        switch (position) {
             case 0:
                 fragment = new GroceryListFragment();
                 break;
@@ -55,4 +56,4 @@ public class ViewPageAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return 3;
     }
-}
+}*/

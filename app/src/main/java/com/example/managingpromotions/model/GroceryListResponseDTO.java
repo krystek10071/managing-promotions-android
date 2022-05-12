@@ -2,6 +2,7 @@ package com.example.managingpromotions.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +12,7 @@ import javax.validation.Valid;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class GroceryListResponseDTO {
+public class GroceryListResponseDTO implements Serializable {
     @JsonProperty("id")
     private Long id;
 

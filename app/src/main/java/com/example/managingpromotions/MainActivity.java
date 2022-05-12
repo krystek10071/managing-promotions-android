@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.managingpromotions.addGrocery.activity.AddGroceryListActivityView;
-import com.example.managingpromotions.cheapestShopping.CheapestShoppingActivity;
+import com.example.managingpromotions.cheapestShopping.groceryList.activity.CheapestShoppingActivity;
 
 public class MainActivity extends AppCompatActivity {
 

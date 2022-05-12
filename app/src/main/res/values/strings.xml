@@ -19,4 +19,8 @@
     <string name="name_grocery_list">nazwa listy zakupów</string>
     <string name="addedDate">Data dodania</string>
     <string name="select">Zaznacz</string>
+    <string name="buttonNext">Przejdź dalej</string>
+    <string name="textviewAmount">Ilość</string>
+    <string name="productName">Nazwa produktu</string>
+    <string name="price">cena</string>
 </resources>
