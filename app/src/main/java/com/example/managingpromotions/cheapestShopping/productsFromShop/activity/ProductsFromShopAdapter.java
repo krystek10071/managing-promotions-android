@@ -1,5 +1,6 @@
 package com.example.managingpromotions.cheapestShopping.productsFromShop.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,19 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
-import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ProductParsedFromShopDTO;
+import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ParsedProductDTO;
 
 import java.util.List;
 
 public class ProductsFromShopAdapter extends RecyclerView.Adapter<ProductsFromShopAdapter.ProductsHolder> {
 
     private Context context;
-    private ProductParsedFromShopDTO productParsedFromShopDTO;
+    private List<ParsedProductDTO> parsedProductDTOS;
     private List<Boolean> checkBoxStateArray;
 
-    public ProductsFromShopAdapter(Context context, ProductParsedFromShopDTO productParsedFromShopDTO, List<Boolean> checkBoxStateArray) {
+    public ProductsFromShopAdapter(Context context, List<ParsedProductDTO> parsedProductDTOS, List<Boolean> checkBoxStateArray) {
         this.context = context;
-        this.productParsedFromShopDTO = productParsedFromShopDTO;
+        this.parsedProductDTOS = parsedProductDTOS;
         this.checkBoxStateArray = checkBoxStateArray;
     }
 
@@ -37,9 +38,23 @@ public class ProductsFromShopAdapter extends RecyclerView.Adapter<ProductsFromSh
         return new ProductsHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ProductsFromShopAdapter.ProductsHolder holder, int position) {
 
+        holder.textViewProductName.setText(parsedProductDTOS.get(position).getName());
+        holder.textViewAmount.setText(parsedProductDTOS.get(position).getAmount());
+        holder.textViewPrice.setText(parsedProductDTOS.get(position).getPrice().toString());
+
+        holder.checkBox.setOnClickListener(view -> {
+            if (checkBoxStateArray.get(position)) {
+                holder.checkBox.setChecked(false);
+                checkBoxStateArray.set(position, false);
+            } else {
+                holder.checkBox.setChecked(true);
+                checkBoxStateArray.set(position, true);
+            }
+        });
     }
 
     @Override

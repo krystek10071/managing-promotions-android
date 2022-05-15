@@ -38,8 +38,7 @@ public class ProductsFromShopPresenter {
                     productsFromShopActivity.displayMessage(errorMassage);
                 } else {
                     if (response.body() != null) {
-                        //todo invoke method setRecyclerView
-                       // productsFromShopActivity.setRecyclerView(response.body());
+                        productsFromShopActivity.setRecyclerView(response.body());
                     } else {
                         String message = "Value body is null";
                         Log.i("ERROR", message);
@@ -53,6 +52,5 @@ public class ProductsFromShopPresenter {
                 Log.e("ERROR", t.getMessage());
             }
         });
-
     }
 }
