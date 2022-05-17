@@ -1,6 +1,5 @@
 package com.example.managingpromotions.cheapestShopping.productsFromShop.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,12 +37,11 @@ public class ProductsFromShopAdapter extends RecyclerView.Adapter<ProductsFromSh
         return new ProductsHolder(view);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ProductsFromShopAdapter.ProductsHolder holder, int position) {
 
         holder.textViewProductName.setText(parsedProductDTOS.get(position).getName());
-        holder.textViewAmount.setText(parsedProductDTOS.get(position).getAmount());
+        holder.textViewAmount.setText(parsedProductDTOS.get(position).getAmount().toString());
         holder.textViewPrice.setText(parsedProductDTOS.get(position).getPrice().toString());
 
         holder.checkBox.setOnClickListener(view -> {
@@ -59,7 +57,11 @@ public class ProductsFromShopAdapter extends RecyclerView.Adapter<ProductsFromSh
 
     @Override
     public int getItemCount() {
-        return 0;
+        if (parsedProductDTOS == null || parsedProductDTOS.isEmpty()) {
+            return 0;
+        }
+
+        return parsedProductDTOS.size();
     }
 
     public static class ProductsHolder extends RecyclerView.ViewHolder {

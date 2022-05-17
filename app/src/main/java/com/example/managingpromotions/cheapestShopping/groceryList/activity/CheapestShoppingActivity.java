@@ -47,8 +47,6 @@ public class CheapestShoppingActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //set Grocery List elements
-        groceryListPresenter.getGroceryLists();
 
         buttonNext.setOnClickListener(view -> {
             Intent intent = new Intent(this, ProductsFromShopActivity.class);

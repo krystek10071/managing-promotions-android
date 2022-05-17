@@ -20,11 +20,10 @@ import java.util.List;
 
 public class ProductsFromShopActivity extends AppCompatActivity {
 
-    private Button nextButton;
-    private TextView testTextViewTab2;
+    private Button buttonNext;
+    private TextView textViewShopName;
     private RecyclerView recyclerView;
     private ProductsFromShopAdapter productsFromShopAdapter;
-    private ProductsFromShopPresenter productsFromShopPresenter;
     private List<ProductParsedFromShopDTO> productParsedFromShopDTOS;
     private List<ParsedProductDTO> productsParsedFromShopsRv;
     private List<Boolean> checkBoxStateArray;
@@ -39,15 +38,14 @@ public class ProductsFromShopActivity extends AppCompatActivity {
 
         initComponents();
 
-        productsFromShopPresenter = new ProductsFromShopPresenter(this);
-        //todo implement fetch Grocery List id
-        productsFromShopPresenter.getProductsFromShop(1L);
+        ProductsFromShopPresenter productsFromShopPresenter = new ProductsFromShopPresenter(this);
         checkBoxStateArray = new ArrayList<>(productsParsedFromShopsRv.size());
-
         productsFromShopAdapter = new ProductsFromShopAdapter(this, productsParsedFromShopsRv, checkBoxStateArray);
-
         recyclerView.setAdapter(productsFromShopAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //todo implement fetch Grocery List id
+        productsFromShopPresenter.getProductsFromShop(1L);
     }
 
     private void initComponents() {
@@ -55,12 +53,21 @@ public class ProductsFromShopActivity extends AppCompatActivity {
         productParsedFromShopDTOS = new ArrayList<>();
         productsParsedFromShopsRv = new ArrayList<>();
         recyclerView = findViewById(R.id.products_from_shops_rv);
-        nextButton = findViewById(R.id.nextButton);
+        textViewShopName = findViewById(R.id.textViewShopName);
+        buttonNext = findViewById(R.id.nextButton);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
+        buttonNext.setOnClickListener(view ->
+        {
+            changedShopPosition++;
+            ProductParsedFromShopDTO productParsedFromShopDTO = productParsedFromShopDTOS.get(changedShopPosition);
+
+            updateRecyclerView(productParsedFromShopDTO);
+        });
     }
 
     public void displayMessage(String message) {
@@ -69,10 +76,38 @@ public class ProductsFromShopActivity extends AppCompatActivity {
 
     public void setRecyclerView(List<ProductParsedFromShopDTO> productParsedFromShopDTOResponse) {
 
-        this.productParsedFromShopDTOS = productParsedFromShopDTOResponse;
+        productParsedFromShopDTOS.addAll(productParsedFromShopDTOResponse);
 
         if (productParsedFromShopDTOResponse.get(changedShopPosition) != null) {
-            productsParsedFromShopsRv = productParsedFromShopDTOS.get(changedShopPosition).getProducts();
+
+            productsParsedFromShopsRv.clear();
+            productsParsedFromShopsRv.addAll(productParsedFromShopDTOS.get(changedShopPosition).getProducts());
+
+            //setCheckBoxArray
+            productsParsedFromShopsRv.forEach(product -> {
+                checkBoxStateArray.add(false);
+            });
+        }
+
+        textViewShopName.setText(productParsedFromShopDTOS.get(changedShopPosition).getShopName());
+        productsFromShopAdapter.notifyItemChanged(productsParsedFromShopsRv.size());
+    }
+
+    private void updateRecyclerView(ProductParsedFromShopDTO productParsedFromShopDTO) {
+
+        if (productParsedFromShopDTO != null) {
+            productsParsedFromShopsRv.clear();
+
+            textViewShopName.setText(productParsedFromShopDTO.getShopName());
+
+            if (productParsedFromShopDTO.getProducts() != null) {
+                productsParsedFromShopsRv.addAll(productParsedFromShopDTO.getProducts());
+
+                //setCheckBoxArray
+                productsParsedFromShopsRv.forEach(product -> {
+                    checkBoxStateArray.add(false);
+                });
+            }
         }
 
         productsFromShopAdapter.notifyItemChanged(productsParsedFromShopsRv.size());
