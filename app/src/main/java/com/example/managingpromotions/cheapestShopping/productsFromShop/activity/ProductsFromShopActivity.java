@@ -1,5 +1,7 @@
 package com.example.managingpromotions.cheapestShopping.productsFromShop.activity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
+import com.example.managingpromotions.cheapestShopping.BestShopResultActivity;
 import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ParsedProductDTO;
 import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ProductParsedFromShopDTO;
 import com.example.managingpromotions.cheapestShopping.productsFromShop.presenter.ProductsFromShopPresenter;
@@ -25,20 +28,20 @@ public class ProductsFromShopActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProductsFromShopAdapter productsFromShopAdapter;
     private List<ProductParsedFromShopDTO> productParsedFromShopDTOS;
+    private List<ProductParsedFromShopDTO> selectedProductsToCalculateDTOS;
+    private ProductsFromShopPresenter productsFromShopPresenter;
     private List<ParsedProductDTO> productsParsedFromShopsRv;
     private List<Boolean> checkBoxStateArray;
     private int changedShopPosition;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.products_from_shop_activity);
-
         initComponents();
 
-        ProductsFromShopPresenter productsFromShopPresenter = new ProductsFromShopPresenter(this);
+        productsFromShopPresenter = new ProductsFromShopPresenter(this);
         checkBoxStateArray = new ArrayList<>(productsParsedFromShopsRv.size());
         productsFromShopAdapter = new ProductsFromShopAdapter(this, productsParsedFromShopsRv, checkBoxStateArray);
         recyclerView.setAdapter(productsFromShopAdapter);
@@ -48,25 +51,28 @@ public class ProductsFromShopActivity extends AppCompatActivity {
         productsFromShopPresenter.getProductsFromShop(1L);
     }
 
-    private void initComponents() {
-        changedShopPosition = 0;
-        productParsedFromShopDTOS = new ArrayList<>();
-        productsParsedFromShopsRv = new ArrayList<>();
-        recyclerView = findViewById(R.id.products_from_shops_rv);
-        textViewShopName = findViewById(R.id.textViewShopName);
-        buttonNext = findViewById(R.id.nextButton);
-    }
-
     @Override
     protected void onResume() {
         super.onResume();
 
         buttonNext.setOnClickListener(view ->
         {
-            changedShopPosition++;
-            ProductParsedFromShopDTO productParsedFromShopDTO = productParsedFromShopDTOS.get(changedShopPosition);
+            if(checkIfProductsAreSelected(checkBoxStateArray) || checkBoxStateArray.size() == 0){
+                addSelectedProductsToCalculateDTOS(
+                        productParsedFromShopDTOS.get(changedShopPosition), checkBoxStateArray);
 
-            updateRecyclerView(productParsedFromShopDTO);
+                if (changedShopPosition == productParsedFromShopDTOS.size()-1){
+                    Intent intent = new Intent(this, BestShopResultActivity.class);
+                    startActivity(intent);
+                }
+
+                changedShopPosition++;
+                ProductParsedFromShopDTO productParsedFromShopDTO = productParsedFromShopDTOS.get(changedShopPosition);
+
+                updateRecyclerView(productParsedFromShopDTO);
+            }else{
+                displayMessage("Musisz zaznaczyć przynajmniej jeden produkt");
+            }
         });
     }
 
@@ -91,12 +97,15 @@ public class ProductsFromShopActivity extends AppCompatActivity {
 
         textViewShopName.setText(productParsedFromShopDTOS.get(changedShopPosition).getShopName());
         productsFromShopAdapter.notifyItemChanged(productsParsedFromShopsRv.size());
+        recyclerView.refreshDrawableState();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void updateRecyclerView(ProductParsedFromShopDTO productParsedFromShopDTO) {
 
         if (productParsedFromShopDTO != null) {
             productsParsedFromShopsRv.clear();
+            checkBoxStateArray.clear();
 
             textViewShopName.setText(productParsedFromShopDTO.getShopName());
 
@@ -109,7 +118,33 @@ public class ProductsFromShopActivity extends AppCompatActivity {
                 });
             }
         }
-
-        productsFromShopAdapter.notifyItemChanged(productsParsedFromShopsRv.size());
+        productsFromShopAdapter.notifyDataSetChanged();
     }
+
+    private void initComponents() {
+        changedShopPosition = 0;
+        productParsedFromShopDTOS = new ArrayList<>();
+        productsParsedFromShopsRv = new ArrayList<>();
+        selectedProductsToCalculateDTOS = new ArrayList<>();
+        recyclerView = findViewById(R.id.products_from_shops_rv);
+        textViewShopName = findViewById(R.id.textViewShopName);
+        buttonNext = findViewById(R.id.nextButton);
+    }
+
+    private boolean checkIfProductsAreSelected(List<Boolean> checkBoxStateArray) {
+        return checkBoxStateArray.stream()
+                .filter(checkBoxState -> checkBoxState.equals(true))
+                .findFirst()
+                .orElse(false);
+    }
+
+    private void addSelectedProductsToCalculateDTOS(ProductParsedFromShopDTO productParsedFromShopDTO,
+                                                    List<Boolean> checkBoxStateArray) {
+
+        ProductParsedFromShopDTO products = productsFromShopPresenter.addSelectedProductsToCalculateDTOS(
+                productParsedFromShopDTOS.get(changedShopPosition), checkBoxStateArray);
+
+        selectedProductsToCalculateDTOS.add(products);
+    }
+
 }

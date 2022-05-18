@@ -3,10 +3,12 @@ package com.example.managingpromotions.cheapestShopping.productsFromShop.present
 import android.util.Log;
 
 import com.example.managingpromotions.cheapestShopping.productsFromShop.activity.ProductsFromShopActivity;
+import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ParsedProductDTO;
 import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ProductParsedFromShopDTO;
 import com.example.managingpromotions.clientHttp.APIClient;
 import com.example.managingpromotions.clientHttp.GroceryListAPI;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -52,5 +54,23 @@ public class ProductsFromShopPresenter {
                 Log.e("ERROR", t.getMessage());
             }
         });
+    }
+
+    public ProductParsedFromShopDTO addSelectedProductsToCalculateDTOS(ProductParsedFromShopDTO productParsedFromShopDTO,
+                                                                       List<Boolean> checkBoxStateArray) {
+
+        List<ParsedProductDTO> products = productParsedFromShopDTO.getProducts();
+        List<ParsedProductDTO> selectedProducts = new ArrayList<>();
+
+        int i=0;
+        for(Boolean checkBoxState: checkBoxStateArray){
+            if(checkBoxState.equals(true)){
+                selectedProducts.add(products.get(i));
+            }
+            i++;
+        }
+
+        productParsedFromShopDTO.setProducts(selectedProducts);
+        return productParsedFromShopDTO;
     }
 }
