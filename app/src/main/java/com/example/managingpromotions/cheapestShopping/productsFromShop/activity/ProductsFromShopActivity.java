@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
-import com.example.managingpromotions.cheapestShopping.BestShopResultActivity;
+import com.example.managingpromotions.cheapestShopping.bestShopResult.activity.BestShopResultActivity;
 import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ParsedProductDTO;
 import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ProductParsedFromShopDTO;
 import com.example.managingpromotions.cheapestShopping.productsFromShop.presenter.ProductsFromShopPresenter;
@@ -57,20 +57,24 @@ public class ProductsFromShopActivity extends AppCompatActivity {
 
         buttonNext.setOnClickListener(view ->
         {
-            if(checkIfProductsAreSelected(checkBoxStateArray) || checkBoxStateArray.size() == 0){
+            if (checkIfProductsAreSelected(checkBoxStateArray) || checkBoxStateArray.size() == 0) {
                 addSelectedProductsToCalculateDTOS(
                         productParsedFromShopDTOS.get(changedShopPosition), checkBoxStateArray);
 
-                if (changedShopPosition == productParsedFromShopDTOS.size()-1){
+                if (changedShopPosition == productParsedFromShopDTOS.size() - 1) {
                     Intent intent = new Intent(this, BestShopResultActivity.class);
+
+                    intent.putExtra("selectedProductsToCalculate",
+                            (ArrayList<ProductParsedFromShopDTO>) selectedProductsToCalculateDTOS);
+
                     startActivity(intent);
+                } else {
+                    changedShopPosition++;
+                    ProductParsedFromShopDTO productParsedFromShopDTO = productParsedFromShopDTOS.get(changedShopPosition);
+
+                    updateRecyclerView(productParsedFromShopDTO);
                 }
-
-                changedShopPosition++;
-                ProductParsedFromShopDTO productParsedFromShopDTO = productParsedFromShopDTOS.get(changedShopPosition);
-
-                updateRecyclerView(productParsedFromShopDTO);
-            }else{
+            } else {
                 displayMessage("Musisz zaznaczyć przynajmniej jeden produkt");
             }
         });

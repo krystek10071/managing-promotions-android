@@ -2,6 +2,7 @@ package com.example.managingpromotions.cheapestShopping.productsFromShop.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -9,7 +10,7 @@ import javax.validation.Valid;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class ParsedProductDTO   {
+public class ParsedProductDTO implements Serializable {
     @JsonProperty("name")
     private String name;
 

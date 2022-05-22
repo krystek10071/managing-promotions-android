@@ -19,7 +19,6 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
 
     private Context context;
     private List<GroceryListResponseDTO> groceryListResponseDTOS;
-    //todo test
     private List<Boolean> checkBoxStateArray;
 
     public GroceryListAdapter(Context context, List<GroceryListResponseDTO> groceryListResponseDTOS, List<Boolean> checkBoxStateArray) {

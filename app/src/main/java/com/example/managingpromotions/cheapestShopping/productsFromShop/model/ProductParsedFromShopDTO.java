@@ -2,6 +2,7 @@ package com.example.managingpromotions.cheapestShopping.productsFromShop.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,7 +11,7 @@ import javax.validation.Valid;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class ProductParsedFromShopDTO   {
+public class ProductParsedFromShopDTO  implements Serializable {
     @JsonProperty("shopName")
     private String shopName;
 
@@ -19,7 +20,7 @@ public class ProductParsedFromShopDTO   {
 
     @JsonProperty("products")
     @Valid
-    private List<ParsedProductDTO> products = null;
+    private List<ParsedProductDTO> products = new ArrayList<>();
 
     public ProductParsedFromShopDTO shopName(String shopName) {
         this.shopName = shopName;

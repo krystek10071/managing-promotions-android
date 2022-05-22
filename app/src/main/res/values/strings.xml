@@ -24,4 +24,6 @@
     <string name="productName">Nazwa produktu</string>
     <string name="price">cena</string>
     <string name="shopName">Nazwa sklepu</string>
+    <string name="valuesOfPurchases">wartość zakupów</string>
+    <string name="see_selected">zobacz wybrane</string>
 </resources>
