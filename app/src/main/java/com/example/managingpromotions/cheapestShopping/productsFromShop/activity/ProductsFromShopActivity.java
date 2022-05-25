@@ -38,6 +38,8 @@ public class ProductsFromShopActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        long changedPosition = getIntent().getLongExtra("changedPosition", 0);
+
         setContentView(R.layout.products_from_shop_activity);
         initComponents();
 
@@ -47,8 +49,7 @@ public class ProductsFromShopActivity extends AppCompatActivity {
         recyclerView.setAdapter(productsFromShopAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        //todo implement fetch Grocery List id
-        productsFromShopPresenter.getProductsFromShop(1L);
+        productsFromShopPresenter.getProductsFromShop(changedPosition);
     }
 
     @Override

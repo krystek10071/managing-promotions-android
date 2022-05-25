@@ -49,7 +49,9 @@ public class CheapestShoppingActivity extends AppCompatActivity {
         super.onResume();
 
         buttonNext.setOnClickListener(view -> {
+            long changedPosition = findChangedPosition(checkBoxStateArray);
             Intent intent = new Intent(this, ProductsFromShopActivity.class);
+            intent.putExtra("changedPosition", changedPosition);
             startActivity(intent);
         });
     }
@@ -73,5 +75,11 @@ public class CheapestShoppingActivity extends AppCompatActivity {
         });
 
         groceryListAdapter.notifyItemChanged(groceryListResponseDTOS.size());
+    }
+
+    private long findChangedPosition(List<Boolean> checkBoxStateArray) {
+
+      return   groceryListResponseDTOList.get(checkBoxStateArray.indexOf(true)).getId();
+
     }
 }
