@@ -1,6 +1,7 @@
 package com.example.managingpromotions.cheapestShopping.bestShopResult.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
 import com.example.managingpromotions.cheapestShopping.bestShopResult.model.CheapestShoppingReponse;
+import com.example.managingpromotions.cheapestShopping.productsInBasket.activity.ProductsInBasketActivity;
 
 import java.util.List;
 
@@ -40,6 +42,13 @@ public class BestShopResultAdapter extends RecyclerView.Adapter<BestShopResultAd
 
         holder.textViewShopName.setText(cheapestShoppingReponses.get(position).getShopName());
         holder.textViewCostValue.setText(textCostValue);
+        holder.buttonSeeSelectedProducts.setOnClickListener(view -> {
+
+            Intent intent = new Intent(context, ProductsInBasketActivity.class);
+            intent.putExtra("productsInBasket", cheapestShoppingReponses.get(position));
+
+            context.startActivity(intent);
+        });
     }
 
     @Override

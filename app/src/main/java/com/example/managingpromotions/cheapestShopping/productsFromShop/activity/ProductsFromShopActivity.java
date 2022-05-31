@@ -123,6 +123,7 @@ public class ProductsFromShopActivity extends AppCompatActivity {
                 });
             }
         }
+        recyclerView.refreshDrawableState();
         productsFromShopAdapter.notifyDataSetChanged();
     }
 
