@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.managingpromotions.R;
 import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ParsedProductDTO;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ProductsInBasketAdapter extends RecyclerView.Adapter<ProductsInBasketAdapter.ProductsHolder> {
@@ -28,7 +29,7 @@ public class ProductsInBasketAdapter extends RecyclerView.Adapter<ProductsInBask
     @Override
     public ProductsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.recycler_view_products_parsed_from_shop_row, parent, false);
+        View view = layoutInflater.inflate(R.layout.products_in_basket_row, parent, false);
 
         return new ProductsHolder(view);
     }
@@ -39,7 +40,14 @@ public class ProductsInBasketAdapter extends RecyclerView.Adapter<ProductsInBask
         holder.textViewProductName.setText(parsedProductDTOS.get(position).getName());
         holder.textViewPrice.setText(parsedProductDTOS.get(position).getPrice().toString());
         holder.textViewAmount.setText(parsedProductDTOS.get(position).getAmount().toString());
+        holder.textViewSum.setText(calculateSum(parsedProductDTOS.get(position)));
 
+    }
+
+    private String calculateSum(ParsedProductDTO parsedProductDTO) {
+        BigDecimal priceProduct = parsedProductDTO.getPrice();
+        int amount = parsedProductDTO.getAmount();
+        return priceProduct.multiply(BigDecimal.valueOf(amount)).toString() + " zł";
     }
 
     @Override
@@ -53,7 +61,7 @@ public class ProductsInBasketAdapter extends RecyclerView.Adapter<ProductsInBask
 
     public static class ProductsHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewProductName, textViewPrice, textViewAmount;
+        TextView textViewProductName, textViewPrice, textViewAmount, textViewSum;
 
         public ProductsHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +69,7 @@ public class ProductsInBasketAdapter extends RecyclerView.Adapter<ProductsInBask
             textViewProductName = itemView.findViewById(R.id.textViewProductName);
             textViewPrice = itemView.findViewById(R.id.textViewPrice);
             textViewAmount = itemView.findViewById(R.id.textViewAmount);
+            textViewSum = itemView.findViewById(R.id.textViewSum);
         }
     }
 
