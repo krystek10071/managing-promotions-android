@@ -1,6 +1,5 @@
-package com.example.managingpromotions.addGrocery.model;
+package com.example.managingpromotions.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
@@ -14,6 +13,9 @@ import javax.validation.Valid;
 import io.swagger.annotations.ApiModelProperty;
 
 public class GroceryListResponseDTO implements Serializable {
+    @JsonProperty("id")
+    private Long id;
+
     @JsonProperty("name")
     private String name;
 
@@ -27,8 +29,35 @@ public class GroceryListResponseDTO implements Serializable {
     @Valid
     private List<GroceryListProductDTO> products = null;
 
+    public GroceryListResponseDTO id(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    /**
+     * Get id
+     *
+     * @return id
+     */
+    @ApiModelProperty(value = "")
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public GroceryListResponseDTO name(String name) {
+        this.name = name;
+        return this;
+    }
+
     /**
      * Get name
+     *
      * @return name
      */
     @ApiModelProperty(value = "")
@@ -49,6 +78,7 @@ public class GroceryListResponseDTO implements Serializable {
 
     /**
      * Get createDate
+     *
      * @return createDate
      */
     @ApiModelProperty(value = "")
@@ -70,6 +100,7 @@ public class GroceryListResponseDTO implements Serializable {
 
     /**
      * Get modifyDate
+     *
      * @return modifyDate
      */
     @ApiModelProperty(value = "")
@@ -99,6 +130,7 @@ public class GroceryListResponseDTO implements Serializable {
 
     /**
      * Get products
+     *
      * @return products
      */
     @ApiModelProperty(value = "")
@@ -123,7 +155,8 @@ public class GroceryListResponseDTO implements Serializable {
             return false;
         }
         GroceryListResponseDTO groceryListResponseDTO = (GroceryListResponseDTO) o;
-        return Objects.equals(this.name, groceryListResponseDTO.name) &&
+        return Objects.equals(this.id, groceryListResponseDTO.id) &&
+                Objects.equals(this.name, groceryListResponseDTO.name) &&
                 Objects.equals(this.createDate, groceryListResponseDTO.createDate) &&
                 Objects.equals(this.modifyDate, groceryListResponseDTO.modifyDate) &&
                 Objects.equals(this.products, groceryListResponseDTO.products);
@@ -131,7 +164,7 @@ public class GroceryListResponseDTO implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, createDate, modifyDate, products);
+        return Objects.hash(id, name, createDate, modifyDate, products);
     }
 
     @Override
@@ -139,6 +172,7 @@ public class GroceryListResponseDTO implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("class GroceryListResponseDTO {\n");
 
+        sb.append("    id: ").append(toIndentedString(id)).append("\n");
         sb.append("    name: ").append(toIndentedString(name)).append("\n");
         sb.append("    createDate: ").append(toIndentedString(createDate)).append("\n");
         sb.append("    modifyDate: ").append(toIndentedString(modifyDate)).append("\n");

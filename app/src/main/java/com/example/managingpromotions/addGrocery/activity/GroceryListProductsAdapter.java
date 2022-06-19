@@ -11,15 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
-import com.example.managingpromotions.addGrocery.model.GroceryListProductDTO;
+import com.example.managingpromotions.model.GroceryListProductDTO;
 
-import java.util.Collections;
 import java.util.List;
 
 public class GroceryListProductsAdapter extends RecyclerView.Adapter<GroceryListProductsAdapter.ProductHolder> {
 
-    /*private List<String> productName;
-    private List<Integer> amount;*/
     private List<GroceryListProductDTO> groceryListProductDTOS;
     private Context context;
 
@@ -52,9 +49,6 @@ public class GroceryListProductsAdapter extends RecyclerView.Adapter<GroceryList
 
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
-
-       // holder.productNameTextView.setText(productName.get(position));
-       // holder.amountTextView.setText(String.valueOf(amount.get(position)));
 
         holder.productNameTextView.setText(groceryListProductDTOS.get(position).getName());
         holder.amountTextView.setText(String.valueOf(groceryListProductDTOS.get(position).getAmount()));

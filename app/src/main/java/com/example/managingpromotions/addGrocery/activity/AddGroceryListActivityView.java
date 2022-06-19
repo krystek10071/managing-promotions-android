@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
-import com.example.managingpromotions.addGrocery.model.GroceryListDTO;
-import com.example.managingpromotions.addGrocery.model.GroceryListProductDTO;
 import com.example.managingpromotions.addGrocery.presenter.AddGroceryPresenterImpl;
-import com.example.managingpromotions.network.GroceryListAPI;
+import com.example.managingpromotions.model.GroceryListDTO;
+import com.example.managingpromotions.model.GroceryListProductDTO;
+import com.example.managingpromotions.clientHttp.GroceryListAPI;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
@@ -23,7 +23,6 @@ import java.util.Objects;
 public class AddGroceryListActivityView extends AppCompatActivity {
 
     private final List<GroceryListProductDTO> productDTOS = new ArrayList<>();
-
 
     private TextInputEditText inputNameProduct, inputAmount, inputGroceryListName;
     private GroceryListProductsAdapter groceryListProductsAdapter;
@@ -39,7 +38,6 @@ public class AddGroceryListActivityView extends AppCompatActivity {
         setContentView(R.layout.add_grocery_list_form);
         initComponents();
         initPresenter();
-
 
         groceryListProductsAdapter = new GroceryListProductsAdapter(productDTOS, this);
 
@@ -72,7 +70,7 @@ public class AddGroceryListActivityView extends AppCompatActivity {
     }
 
     private void initComponents() {
-        recyclerView = findViewById(R.id.rvGroceryList);
+        recyclerView = findViewById(R.id.fragment_grocery_list_rv);
         inputNameProduct = findViewById(R.id.input_name_product);
         inputAmount = findViewById(R.id.input_amount);
         addGroceryRowButton = findViewById(R.id.add_product_button);
