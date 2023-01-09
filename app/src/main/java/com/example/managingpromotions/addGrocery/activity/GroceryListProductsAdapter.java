@@ -17,8 +17,8 @@ import java.util.List;
 
 public class GroceryListProductsAdapter extends RecyclerView.Adapter<GroceryListProductsAdapter.ProductHolder> {
 
-    private List<GroceryListProductDTO> groceryListProductDTOS;
-    private Context context;
+    private final List<GroceryListProductDTO> groceryListProductDTOS;
+    private final Context context;
 
     public GroceryListProductsAdapter(List<GroceryListProductDTO> groceryListProductDTOS, Context context) {
         this.groceryListProductDTOS = groceryListProductDTOS;

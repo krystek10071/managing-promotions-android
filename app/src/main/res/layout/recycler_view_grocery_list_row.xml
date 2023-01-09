@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView android:layout_width="match_parent"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="60dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:cardCornerRadius="16dp">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <TextView
-            android:id="@+id/product_name"
-            android:layout_width="270dp"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            app:errorEnabled="true" />
-
-        <TextView
-            android:id="@+id/amount"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:textSize="20sp"
-            app:errorEnabled="true" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:background="#EFEFEF"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:text="@string/product_name"
+                android:textSize="20sp"
+                app:errorEnabled="true" />
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="30dp"
+                android:text="@string/input_amount"
+                android:textSize="20sp"
+                app:errorEnabled="true" />
+        </LinearLayout>
+
 </androidx.cardview.widget.CardView>
