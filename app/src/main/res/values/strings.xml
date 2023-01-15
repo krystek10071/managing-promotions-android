@@ -26,4 +26,6 @@
     <string name="shopName">Nazwa sklepu</string>
     <string name="valuesOfPurchases">wartość zakupów</string>
     <string name="see_selected">zobacz wybrane</string>
+    <string name="promotional_newsletter">Gazetki promocyjne</string>
+    <string name="product_name">nazwa produktu</string>
 </resources>
