@@ -28,4 +28,8 @@
     <string name="see_selected">zobacz wybrane</string>
     <string name="promotional_newsletter">Gazetki promocyjne</string>
     <string name="product_name">nazwa produktu</string>
+    <string name="sign_in">Zaloguj</string>
+    <string name="sign_up">zarejestruj</string>
+    <string name="username">Nazwa użytkownika</string>
+    <string name="passsword">hasło</string>
 </resources>
