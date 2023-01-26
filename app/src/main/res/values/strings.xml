@@ -32,4 +32,6 @@
     <string name="sign_up">zarejestruj</string>
     <string name="username">Nazwa użytkownika</string>
     <string name="passsword">hasło</string>
+    <string name="passsword_confirmation">powtórzone hasło</string>
+    <string name="create_account">Utwórz konto</string>
 </resources>

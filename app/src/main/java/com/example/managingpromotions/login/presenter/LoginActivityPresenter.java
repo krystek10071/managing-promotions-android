@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.example.managingpromotions.clientHttp.APIClient;
 import com.example.managingpromotions.clientHttp.AccountAPI;
-import com.example.managingpromotions.login.LoginActivityView;
+import com.example.managingpromotions.login.activity.LoginActivityView;
 import com.example.managingpromotions.model.LoginCredentials;
 
 import retrofit2.Call;
@@ -30,7 +30,6 @@ public class LoginActivityPresenter {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
 
-                    //todo implement action when user is logged
                     String message = "Pomyślnie zalogowano do serwisu";
                     loginActivityView.displayMessage(message);
                     loginActivityView.invokeMainActivity();

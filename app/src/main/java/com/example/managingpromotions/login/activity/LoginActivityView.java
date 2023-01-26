@@ -1,4 +1,4 @@
-package com.example.managingpromotions.login;
+package com.example.managingpromotions.login.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import com.example.managingpromotions.MainActivity;
 import com.example.managingpromotions.R;
 import com.example.managingpromotions.login.presenter.LoginActivityPresenter;
 import com.example.managingpromotions.model.LoginCredentials;
+import com.example.managingpromotions.registration.RegistrationActivityView;
 
 public class LoginActivityView extends AppCompatActivity {
 
@@ -41,6 +42,12 @@ public class LoginActivityView extends AppCompatActivity {
             loginCredentials.setPassword(passwordInput.getText().toString());
 
             loginActivityPresenter.loginToService(loginCredentials);
+        });
+
+        signUpButton.setOnClickListener(view -> {
+
+            Intent intent = new Intent(this, RegistrationActivityView.class);
+            startActivity(intent);
         });
     }
 
