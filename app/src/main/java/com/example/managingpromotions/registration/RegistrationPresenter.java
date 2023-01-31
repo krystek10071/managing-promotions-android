@@ -1,5 +1,7 @@
 package com.example.managingpromotions.registration;
 
+import android.util.Log;
+
 import com.example.managingpromotions.clientHttp.APIClient;
 import com.example.managingpromotions.clientHttp.AccountAPI;
 import com.example.managingpromotions.model.RegistrationCredentials;
@@ -29,14 +31,22 @@ public class RegistrationPresenter {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
 
-                registrationActivityView.displayMessage(CREATED_ACCOUNT_MESSAGE);
 
-                registrationActivityView.invokeLoginActivity();
+                if (response.isSuccessful()) {
+
+                    registrationActivityView.displayMessage(CREATED_ACCOUNT_MESSAGE);
+                    registrationActivityView.invokeLoginActivity();
+                } else {
+
+                    String errorMassage = "ERROR HTTP CODE: " + response.code();
+                    Log.e("ERROR", errorMassage);
+                    registrationActivityView.displayMessage(errorMassage);
+                }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                Log.e("ERROR", t.getMessage());
             }
         });
 
