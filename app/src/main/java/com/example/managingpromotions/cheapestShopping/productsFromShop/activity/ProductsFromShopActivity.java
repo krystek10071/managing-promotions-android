@@ -24,7 +24,7 @@ import java.util.List;
 public class ProductsFromShopActivity extends AppCompatActivity {
 
     private Button buttonNext;
-    private TextView textViewShopName;
+    private TextView textViewShopName, textViewProductName;
     private RecyclerView recyclerView;
     private ProductsFromShopAdapter productsFromShopAdapter;
     private List<ProductParsedFromShopDTO> productParsedFromShopDTOS;
@@ -100,7 +100,8 @@ public class ProductsFromShopActivity extends AppCompatActivity {
             });
         }
 
-        textViewShopName.setText(productParsedFromShopDTOS.get(changedShopPosition).getShopName());
+        textViewShopName.setText(productParsedFromShopDTOS.get(changedShopPosition).getShopName().getValue());
+        textViewProductName.setText(productParsedFromShopDTOS.get(changedShopPosition).getProductFromGroceryList());
         productsFromShopAdapter.notifyItemChanged(productsParsedFromShopsRv.size());
         recyclerView.refreshDrawableState();
     }
@@ -112,7 +113,8 @@ public class ProductsFromShopActivity extends AppCompatActivity {
             productsParsedFromShopsRv.clear();
             checkBoxStateArray.clear();
 
-            textViewShopName.setText(productParsedFromShopDTO.getShopName());
+            textViewShopName.setText(productParsedFromShopDTO.getShopName().getValue());
+            textViewProductName.setText(productParsedFromShopDTO.getProductFromGroceryList());
 
             if (productParsedFromShopDTO.getProducts() != null) {
                 productsParsedFromShopsRv.addAll(productParsedFromShopDTO.getProducts());
@@ -135,6 +137,7 @@ public class ProductsFromShopActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.products_from_shops_rv);
         textViewShopName = findViewById(R.id.textViewShopName);
         buttonNext = findViewById(R.id.nextButton);
+        textViewProductName = findViewById(R.id.textViewProductName);
     }
 
     private boolean checkIfProductsAreSelected(List<Boolean> checkBoxStateArray) {
