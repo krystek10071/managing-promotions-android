@@ -9,7 +9,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="134dp"
         android:orientation="vertical"
         android:padding="@dimen/cardview_default_radius">
 
@@ -27,25 +27,37 @@
 
         <TextView
             android:id="@+id/textViewCostValue"
-            android:layout_width="158dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="69dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="68dp"
             android:text="@string/valuesOfPurchases"
             android:textSize="20sp"
             app:errorEnabled="true" />
 
         <Button
             android:id="@+id/seeSelectedProducts"
-            android:layout_width="185dp"
+            android:layout_width="142dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="215dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="58dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/see_selected"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/attention_button"
+            android:layout_width="37dp"
+            android:layout_height="32dp"
+            android:layout_below="@+id/textViewShopName"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:layout_toEndOf="@+id/textViewCostValue"
+            app:srcCompat="@drawable/warning_icon_48x48px" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -58,25 +58,20 @@ public class ProductsFromShopActivity extends AppCompatActivity {
 
         buttonNext.setOnClickListener(view ->
         {
-            if (checkIfProductsAreSelected(checkBoxStateArray) || checkBoxStateArray.size() == 0) {
-                addSelectedProductsToCalculateDTOS(
-                        productParsedFromShopDTOS.get(changedShopPosition), checkBoxStateArray);
+            addSelectedProductsToCalculateDTOS(
+                    productParsedFromShopDTOS.get(changedShopPosition), checkBoxStateArray);
 
-                if (changedShopPosition == productParsedFromShopDTOS.size() - 1) {
-                    Intent intent = new Intent(this, BestShopResultActivity.class);
+            if (changedShopPosition == productParsedFromShopDTOS.size() - 1) {
+                Intent intent = new Intent(this, BestShopResultActivity.class);
 
-                    intent.putExtra("selectedProductsToCalculate",
-                            (ArrayList<ProductParsedFromShopDTO>) selectedProductsToCalculateDTOS);
+                intent.putExtra("selectedProductsToCalculate",
+                        (ArrayList<ProductParsedFromShopDTO>) selectedProductsToCalculateDTOS);
 
-                    startActivity(intent);
-                } else {
-                    changedShopPosition++;
-                    ProductParsedFromShopDTO productParsedFromShopDTO = productParsedFromShopDTOS.get(changedShopPosition);
-
-                    updateRecyclerView(productParsedFromShopDTO);
-                }
+                startActivity(intent);
             } else {
-                displayMessage("Musisz zaznaczyć przynajmniej jeden produkt");
+                changedShopPosition++;
+                ProductParsedFromShopDTO productParsedFromShopDTO = productParsedFromShopDTOS.get(changedShopPosition);
+                updateRecyclerView(productParsedFromShopDTO);
             }
         });
     }
