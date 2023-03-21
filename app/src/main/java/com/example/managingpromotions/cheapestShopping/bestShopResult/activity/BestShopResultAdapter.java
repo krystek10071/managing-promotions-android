@@ -56,9 +56,8 @@ public class BestShopResultAdapter extends RecyclerView.Adapter<BestShopResultAd
             context.startActivity(intent);
         });
 
-        holder.attentionButton.setOnClickListener(view -> {
-            createMessageForUnselectedProduct(cheapestShoppingReponses, position);
-        });
+        holder.attentionButton.setOnClickListener(view ->
+                createMessageForUnselectedProduct(cheapestShoppingReponses, position));
     }
 
     private void createMessageForUnselectedProduct(List<CheapestShoppingReponse> cheapestShoppingReponses, int position) {
