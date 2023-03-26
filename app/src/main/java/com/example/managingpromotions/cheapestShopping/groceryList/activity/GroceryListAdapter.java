@@ -40,8 +40,9 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
     @Override
     public void onBindViewHolder(@NonNull GroceryListAdapter.GroceryHolder holder, int position) {
 
-        holder.textViewGroceryName.setText(groceryListResponseDTOS.get(position).getName());
+        holder.textViewGroceryName.setText( groceryListResponseDTOS.get(position).getName());
         holder.textViewAddedData.setText(groceryListResponseDTOS.get(position).getCreateDate().toString());
+        holder.textViewGroceryField.setText("Nazwa: ");
 
         holder.checkBox.setOnClickListener(view -> {
             if (checkBoxStateArray.get(position)) {
@@ -65,7 +66,7 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
 
     public static class GroceryHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewGroceryName, textViewAddedData;
+        TextView textViewGroceryName, textViewAddedData, textViewGroceryField;
         CheckBox checkBox;
 
         public GroceryHolder(@NonNull View itemView) {
@@ -73,6 +74,7 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
 
             textViewGroceryName = itemView.findViewById(R.id.textViewGroceryName);
             textViewAddedData = itemView.findViewById(R.id.textViewAddedData);
+            textViewGroceryField = itemView.findViewById(R.id.textViewGroceryField);
             checkBox = itemView.findViewById(R.id.checkBox);
         }
     }

@@ -10,13 +10,13 @@
     <string name="added_grocery_list_button">Dodane listy zakupów</string>
     <string name="GroceryLists">Listy zakupów</string>
     <string name="findProducts">Produkty</string>
-    <string name="bestShop">Najtańsy sklep</string>
+    <string name="bestShop">Najtańszy sklep</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_text_1">Listy zakupów</string>
     <string name="tab_text_2">Produkty</string>
     <string name="tab_text_3">Najtańszy sklep</string>
-    <string name="name_grocery_list">nazwa listy zakupów</string>
+    <string name="name_grocery_list">lista1</string>
     <string name="addedDate">Data dodania</string>
     <string name="select">Zaznacz</string>
     <string name="buttonNext">Przejdź dalej</string>
