@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_marginTop="10dp"
     android:layout_height="130dp"
@@ -18,23 +19,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/textViewGroceryField"
-            android:padding="@dimen/cardview_default_radius"
             android:text="@string/name_grocery_list"
             android:textSize="20sp"
+            app:errorEnabled="true" />
+
+        <TextView
+            android:id="@+id/textViewAddedDataBase"
+            android:layout_width="158dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewGroceryName"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/addedDate"
+            android:textSize="14sp"
             app:errorEnabled="true" />
 
         <TextView
             android:id="@+id/textViewAddedData"
             android:layout_width="158dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textViewGroceryName"
+            android:layout_below="@+id/textViewAddedDataBase"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="1dp"
             android:text="@string/addedDate"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:errorEnabled="true" />
 
         <CheckBox
@@ -53,9 +64,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
             android:text="@string/name_grocery_list"
-            android:layout_marginStart="3dp"
             android:textSize="20sp"
-            android:layout_marginTop="20dp"/>
+            tools:text="Nazwa listy" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

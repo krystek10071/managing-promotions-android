@@ -7,7 +7,7 @@
 
     <style name="MyButtonStyle" parent="@style/Widget.AppCompat.Button">
         <item name="android:textColor">#FFFFFF</item>
-        <item name="backgroundTint">#C98F384D</item>
+        <item name="backgroundTint">#EEB14D65</item>
         <item name="android:textStyle">bold</item>
         <item name="android:letterSpacing">0.15</item>
     </style>
