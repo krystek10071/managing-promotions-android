@@ -17,9 +17,9 @@ import java.util.List;
 
 public class ProductsFromShopAdapter extends RecyclerView.Adapter<ProductsFromShopAdapter.ProductsHolder> {
 
-    private Context context;
-    private List<ParsedProductDTO> parsedProductDTOS;
-    private List<Boolean> checkBoxStateArray;
+    private final Context context;
+    private final List<ParsedProductDTO> parsedProductDTOS;
+    private final List<Boolean> checkBoxStateArray;
 
     public ProductsFromShopAdapter(Context context, List<ParsedProductDTO> parsedProductDTOS, List<Boolean> checkBoxStateArray) {
         this.context = context;

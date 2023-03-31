@@ -23,7 +23,7 @@
     <string name="count">10</string>
     <string name="productName">Nazwa produktu</string>
     <string name="price">3.99</string>
-    <string name="shopName">Nazwa sklepu</string>
+    <string name="shopName">Nazwa sklepu:</string>
     <string name="valuesOfPurchases">0.00 zł</string>
     <string name="see_selected">zobacz wybrane</string>
     <string name="promotional_newsletter">Gazetki promocyjne</string>
@@ -32,4 +32,5 @@
     <string name="currency">zł</string>
     <string name="textviewAmount">Ilość:</string>
     <string name="product_name_grocery">Produkt z listy zakupów:</string>
+    <string name="eleclerc">Eleclerc</string>
 </resources>
