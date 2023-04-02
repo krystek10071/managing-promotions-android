@@ -24,7 +24,7 @@ import java.util.List;
 public class ProductsFromShopActivity extends AppCompatActivity {
 
     private Button buttonNext;
-    private TextView textViewShopName, textViewProductName;
+    private TextView textViewShopName, textViewProductGroceryList;
     private RecyclerView recyclerView;
     private ProductsFromShopAdapter productsFromShopAdapter;
     private List<ProductParsedFromShopDTO> productParsedFromShopDTOS;
@@ -96,7 +96,7 @@ public class ProductsFromShopActivity extends AppCompatActivity {
         }
 
         textViewShopName.setText(productParsedFromShopDTOS.get(changedShopPosition).getShopName().getValue());
-        textViewProductName.setText(productParsedFromShopDTOS.get(changedShopPosition).getProductFromGroceryList());
+        textViewProductGroceryList.setText(productParsedFromShopDTOS.get(changedShopPosition).getProductFromGroceryList());
         productsFromShopAdapter.notifyItemChanged(productsParsedFromShopsRv.size());
         recyclerView.refreshDrawableState();
     }
@@ -109,7 +109,7 @@ public class ProductsFromShopActivity extends AppCompatActivity {
             checkBoxStateArray.clear();
 
             textViewShopName.setText(productParsedFromShopDTO.getShopName().getValue());
-            textViewProductName.setText(productParsedFromShopDTO.getProductFromGroceryList());
+            textViewProductGroceryList.setText(productParsedFromShopDTO.getProductFromGroceryList());
 
             if (productParsedFromShopDTO.getProducts() != null) {
                 productsParsedFromShopsRv.addAll(productParsedFromShopDTO.getProducts());
@@ -132,7 +132,7 @@ public class ProductsFromShopActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.products_from_shops_rv);
         textViewShopName = findViewById(R.id.textViewShopName);
         buttonNext = findViewById(R.id.nextButton);
-        textViewProductName = findViewById(R.id.textViewProductName);
+        textViewProductGroceryList = findViewById(R.id.textViewProductGroceryList);
     }
 
     private boolean checkIfProductsAreSelected(List<Boolean> checkBoxStateArray) {
