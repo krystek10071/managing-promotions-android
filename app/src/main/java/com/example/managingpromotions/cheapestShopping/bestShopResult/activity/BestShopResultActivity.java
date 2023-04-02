@@ -23,19 +23,20 @@ public class BestShopResultActivity extends AppCompatActivity {
     private BestShopResultPresenter bestShopResultPresenter;
     private List<CheapestShoppingReponse> cheapestShoppingReponse;
 
+    private List<ProductParsedFromShopDTO> parsedProducts;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.best_shop_result_activity);
 
-        List<ProductParsedFromShopDTO> productParsed =
-                (List<ProductParsedFromShopDTO>) getIntent().getSerializableExtra("selectedProductsToCalculate");
+        parsedProducts = (List<ProductParsedFromShopDTO>) getIntent().getSerializableExtra("selectedProductsToCalculate");
 
         initComponents();
         recyclerView.setAdapter(bestShopResultAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        bestShopResultPresenter.calculateCostOfPurchases(productParsed);
+        bestShopResultPresenter.calculateCostOfPurchases(parsedProducts);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class BestShopResultActivity extends AppCompatActivity {
     private void initComponents() {
         recyclerView = findViewById(R.id.best_shop_result_rv);
         cheapestShoppingReponse = new ArrayList<>();
-        bestShopResultAdapter = new BestShopResultAdapter(this, cheapestShoppingReponse);
+        bestShopResultAdapter = new BestShopResultAdapter(this, cheapestShoppingReponse, parsedProducts);
         bestShopResultPresenter = new BestShopResultPresenter(this);
     }
 

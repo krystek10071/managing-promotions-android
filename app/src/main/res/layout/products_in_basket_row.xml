@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_marginTop="10dp"
-    android:layout_height="120dp"
+    android:layout_height="130dp"
     app:cardCornerRadius="16dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@color/cardBackgroundColor"
         android:padding="@dimen/cardview_default_radius">
 
         <TextView
@@ -22,18 +22,30 @@
             android:layout_marginTop="19dp"
             android:padding="@dimen/cardview_default_radius"
             android:text="@string/productName"
-            android:textSize="20sp"
+            android:textSize="18sp"
             app:errorEnabled="true" />
 
         <TextView
             android:id="@+id/textViewPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="69dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="15dp"
             android:text="@string/price"
-            android:textSize="20sp"
+            android:textSize="18sp"
+            app:errorEnabled="true" />
+
+        <TextView
+            android:id="@+id/textViewCurrency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toEndOf="@+id/textViewPrice"
+            android:text="@string/currency"
+            android:textSize="18sp"
             app:errorEnabled="true" />
 
         <TextView
@@ -48,14 +60,25 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textViewAmount"
+            android:id="@+id/textViewAmountField"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="177dp"
-            android:layout_marginTop="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="140dp"
+            android:layout_marginBottom="15dp"
             android:text="@string/textviewAmount"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/textViewAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginBottom="15dp"
+            android:layout_toEndOf="@+id/textViewAmountField"
+            android:text="@string/count"
+            android:textSize="17sp" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

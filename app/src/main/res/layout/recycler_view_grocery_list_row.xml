@@ -11,9 +11,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#EFEFEF"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            android:background="@color/cardBackgroundColor"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/product_name"

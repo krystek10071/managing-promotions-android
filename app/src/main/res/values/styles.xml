@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TransparentCardView" parent="CardView">
+        <item name="cardBackgroundColor">#33000000</item> <!-- ustawienie przezroczystego koloru tła -->
+    </style>
+
+    <style name="MyButtonStyle" parent="@style/Widget.AppCompat.Button">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="backgroundTint">#EEB14D65</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.15</item>
+    </style>
+</resources>
+
+
+  <!--  C9E6975D-->
+  <!--  C98F384D-->

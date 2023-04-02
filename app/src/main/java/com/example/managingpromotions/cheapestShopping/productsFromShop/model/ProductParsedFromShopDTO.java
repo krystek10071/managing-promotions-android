@@ -13,16 +13,19 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class ProductParsedFromShopDTO  implements Serializable {
     @JsonProperty("shopName")
-    private String shopName;
+    private ShopEnum shopName;
+
+    @JsonProperty("productFromGroceryList")
+    private String productFromGroceryList;
 
     @JsonProperty("groceryListId")
     private Long groceryListId;
 
     @JsonProperty("products")
     @Valid
-    private List<ParsedProductDTO> products = new ArrayList<>();
+    private List<ParsedProductDTO> products = null;
 
-    public ProductParsedFromShopDTO shopName(String shopName) {
+    public ProductParsedFromShopDTO shopName(ShopEnum shopName) {
         this.shopName = shopName;
         return this;
     }
@@ -33,13 +36,34 @@ public class ProductParsedFromShopDTO  implements Serializable {
      */
     @ApiModelProperty(value = "")
 
+    @Valid
 
-    public String getShopName() {
+    public ShopEnum getShopName() {
         return shopName;
     }
 
-    public void setShopName(String shopName) {
+    public void setShopName(ShopEnum shopName) {
         this.shopName = shopName;
+    }
+
+    public ProductParsedFromShopDTO productFromGroceryList(String productFromGroceryList) {
+        this.productFromGroceryList = productFromGroceryList;
+        return this;
+    }
+
+    /**
+     * Get productFromGroceryList
+     * @return productFromGroceryList
+     */
+    @ApiModelProperty(value = "")
+
+
+    public String getProductFromGroceryList() {
+        return productFromGroceryList;
+    }
+
+    public void setProductFromGroceryList(String productFromGroceryList) {
+        this.productFromGroceryList = productFromGroceryList;
     }
 
     public ProductParsedFromShopDTO groceryListId(Long groceryListId) {
@@ -102,13 +126,14 @@ public class ProductParsedFromShopDTO  implements Serializable {
         }
         ProductParsedFromShopDTO productParsedFromShopDTO = (ProductParsedFromShopDTO) o;
         return Objects.equals(this.shopName, productParsedFromShopDTO.shopName) &&
+                Objects.equals(this.productFromGroceryList, productParsedFromShopDTO.productFromGroceryList) &&
                 Objects.equals(this.groceryListId, productParsedFromShopDTO.groceryListId) &&
                 Objects.equals(this.products, productParsedFromShopDTO.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shopName, groceryListId, products);
+        return Objects.hash(shopName, productFromGroceryList, groceryListId, products);
     }
 
     @Override
@@ -117,6 +142,7 @@ public class ProductParsedFromShopDTO  implements Serializable {
         sb.append("class ProductParsedFromShopDTO {\n");
 
         sb.append("    shopName: ").append(toIndentedString(shopName)).append("\n");
+        sb.append("    productFromGroceryList: ").append(toIndentedString(productFromGroceryList)).append("\n");
         sb.append("    groceryListId: ").append(toIndentedString(groceryListId)).append("\n");
         sb.append("    products: ").append(toIndentedString(products)).append("\n");
         sb.append("}");
@@ -134,3 +160,4 @@ public class ProductParsedFromShopDTO  implements Serializable {
         return o.toString().replace("\n", "\n    ");
     }
 }
+
