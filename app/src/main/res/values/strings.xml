@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">managingPromotions</string>
+    <string name="app_name">discount manager</string>
     <string name="form">Dodaj listę zakupów</string>
     <string name="AddGroceryButton">Dodaj listę zakupów</string>
     <string name="AddProductButton">Dodaj Product</string>
@@ -33,4 +33,5 @@
     <string name="textviewAmount">Ilość:</string>
     <string name="product_name_grocery">Produkt z listy zakupów:</string>
     <string name="eleclerc">Eleclerc</string>
+    <string name="selected">wybrane</string>
 </resources>
