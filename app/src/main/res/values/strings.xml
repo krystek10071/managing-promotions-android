@@ -34,4 +34,10 @@
     <string name="product_name_grocery">Produkt z listy zakupów:</string>
     <string name="eleclerc">Eleclerc</string>
     <string name="selected">wybrane</string>
+    <string name="passsword">hasło</string>
+    <string name="sign_in">Zaloguj</string>
+    <string name="sign_up">Zarejestruj</string>
+    <string name="username">login</string>
+    <string name="passsword_confirmation">powtórzone hasło</string>
+    <string name="create_account">Utwórz konto</string>
 </resources>
