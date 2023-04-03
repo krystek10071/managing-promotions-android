@@ -40,4 +40,5 @@
     <string name="username">login</string>
     <string name="passsword_confirmation">powtórzone hasło</string>
     <string name="create_account">Utwórz konto</string>
+    <string name="GoToMainActivity">Przejdź do głównej aktywności</string>
 </resources>

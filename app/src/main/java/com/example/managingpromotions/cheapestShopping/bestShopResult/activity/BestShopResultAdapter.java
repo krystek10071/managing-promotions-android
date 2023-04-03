@@ -50,10 +50,11 @@ public class BestShopResultAdapter extends RecyclerView.Adapter<BestShopResultAd
 
         holder.buttonSeeSelectedProducts.setOnClickListener(view -> {
 
-            Intent intent = new Intent(context, ProductsInBasketActivity.class);
-            intent.putExtra("productsInBasket", cheapestShoppingReponses.get(position));
-
-            context.startActivity(intent);
+            if (cheapestShoppingReponses.get(position).getProducts().isEmpty()) {
+                displayMessage(context, "Listy produktów w koszyku jest pusta");
+            } else {
+                openProductsInBasketActivity(position);
+            }
         });
 
         holder.attentionButton.setOnClickListener(view ->
@@ -96,6 +97,16 @@ public class BestShopResultAdapter extends RecyclerView.Adapter<BestShopResultAd
         return cheapestShoppingReponses.size();
     }
 
+    private void displayMessage(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+
+    private void openProductsInBasketActivity(int position) {
+        Intent intent = new Intent(context, ProductsInBasketActivity.class);
+        intent.putExtra("productsInBasket", cheapestShoppingReponses.get(position));
+
+        context.startActivity(intent);
+    }
 
     public static class BestShopResultHolder extends RecyclerView.ViewHolder {
 
