@@ -49,11 +49,31 @@ public class CheapestShoppingActivity extends AppCompatActivity {
         super.onResume();
 
         buttonNext.setOnClickListener(view -> {
-            long changedPosition = findChangedPosition(checkBoxStateArray);
-            Intent intent = new Intent(this, ProductsFromShopActivity.class);
-            intent.putExtra("changedPosition", changedPosition);
-            startActivity(intent);
+            if (validateCheckBoxStateArray(checkBoxStateArray)) {
+                Long changedPosition = findChangedPosition(checkBoxStateArray);
+                Intent intent = new Intent(this, ProductsFromShopActivity.class);
+                intent.putExtra("changedPosition", changedPosition);
+                startActivity(intent);
+            }
         });
+    }
+
+    private boolean validateCheckBoxStateArray(List<Boolean> checkBoxStateArray) {
+
+        long countTrueValue = checkBoxStateArray.stream()
+                .filter(state -> state)
+                .count();
+
+        if (countTrueValue == 0) {
+            displayMessage("Musisz wybrać przynajmniej jeden element z listy");
+            return false;
+        }
+
+        if (countTrueValue > 1) {
+            displayMessage("Możesz wybrać tylko jeden element z listy");
+            return false;
+        }
+        return true;
     }
 
     private void init() {
@@ -77,9 +97,8 @@ public class CheapestShoppingActivity extends AppCompatActivity {
         groceryListAdapter.notifyItemChanged(groceryListResponseDTOS.size());
     }
 
-    private long findChangedPosition(List<Boolean> checkBoxStateArray) {
+    private Long findChangedPosition(List<Boolean> checkBoxStateArray) {
 
-      return   groceryListResponseDTOList.get(checkBoxStateArray.indexOf(true)).getId();
-
+        return groceryListResponseDTOList.get(checkBoxStateArray.indexOf(true)).getId();
     }
 }

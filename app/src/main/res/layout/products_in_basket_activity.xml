@@ -15,12 +15,23 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/products_in_basket_rv"
             android:layout_width="match_parent"
-            android:layout_height="550dp"
+            android:layout_height="500dp"
             android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
             android:layout_marginTop="65dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <Button
+            android:id="@+id/goToMainActivityButton"
+            style="@style/MyButtonStyle"
+            android:layout_width="208dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_button"
+            android:text="@string/GoToMainActivity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/products_in_basket_rv" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
