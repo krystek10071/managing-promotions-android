@@ -13,13 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.managingpromotions.R;
 import com.example.managingpromotions.model.GroceryListResponseDTO;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.GroceryHolder> {
 
-    private Context context;
-    private List<GroceryListResponseDTO> groceryListResponseDTOS;
-    private List<Boolean> checkBoxStateArray;
+    private static final String GROCERY_LIST_NAME = "Nazwa listy: ";
+    private static final String FORMAT_DATA_TIME = "dd/MM/yyyy HH:mm";
+
+    private final Context context;
+    private final List<GroceryListResponseDTO> groceryListResponseDTOS;
+    private final List<Boolean> checkBoxStateArray;
 
     public GroceryListAdapter(Context context, List<GroceryListResponseDTO> groceryListResponseDTOS, List<Boolean> checkBoxStateArray) {
         this.context = context;
@@ -40,8 +46,9 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
     @Override
     public void onBindViewHolder(@NonNull GroceryListAdapter.GroceryHolder holder, int position) {
 
-        holder.textViewGroceryName.setText(groceryListResponseDTOS.get(position).getName());
-        holder.textViewAddedData.setText(groceryListResponseDTOS.get(position).getCreateDate().toString());
+        holder.textViewGroceryName.setText( groceryListResponseDTOS.get(position).getName());
+        holder.textViewAddedDate.setText(convertDateByFormatter(groceryListResponseDTOS.get(position).getCreateDate()));
+        holder.textViewGroceryField.setText(GROCERY_LIST_NAME);
 
         holder.checkBox.setOnClickListener(view -> {
             if (checkBoxStateArray.get(position)) {
@@ -65,15 +72,21 @@ public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.
 
     public static class GroceryHolder extends RecyclerView.ViewHolder {
 
-        TextView textViewGroceryName, textViewAddedData;
+        TextView textViewGroceryName, textViewAddedDate, textViewGroceryField;
         CheckBox checkBox;
 
         public GroceryHolder(@NonNull View itemView) {
             super(itemView);
 
             textViewGroceryName = itemView.findViewById(R.id.textViewGroceryName);
-            textViewAddedData = itemView.findViewById(R.id.textViewAddedData);
+            textViewAddedDate = itemView.findViewById(R.id.textViewAddedData);
+            textViewGroceryField = itemView.findViewById(R.id.textViewGroceryField);
             checkBox = itemView.findViewById(R.id.checkBox);
         }
+    }
+
+    private String convertDateByFormatter(Date date){
+        SimpleDateFormat simpleDateFormatter = new SimpleDateFormat(FORMAT_DATA_TIME, Locale.GERMANY);
+        return simpleDateFormatter.format(date);
     }
 }

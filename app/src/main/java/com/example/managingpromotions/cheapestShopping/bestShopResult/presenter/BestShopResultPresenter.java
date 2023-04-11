@@ -21,10 +21,8 @@ public class BestShopResultPresenter {
 
     public BestShopResultPresenter(BestShopResultActivity bestShopResultActivity) {
         this.shopAPI = APIClient.getClient().create(ShopAPI.class);
-        ;
         this.bestShopResultActivity = bestShopResultActivity;
     }
-
 
     public void calculateCostOfPurchases(List<ProductParsedFromShopDTO> productParsed) {
 

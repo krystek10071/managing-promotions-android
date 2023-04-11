@@ -1,14 +1,15 @@
 package com.example.managingpromotions.cheapestShopping.productsInBasket.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.managingpromotions.MainActivity;
 import com.example.managingpromotions.R;
 import com.example.managingpromotions.cheapestShopping.bestShopResult.model.CheapestShoppingReponse;
 import com.example.managingpromotions.cheapestShopping.productsFromShop.model.ParsedProductDTO;
@@ -16,24 +17,20 @@ import com.example.managingpromotions.cheapestShopping.productsFromShop.model.Pa
 import java.util.List;
 
 public class ProductsInBasketActivity extends AppCompatActivity {
-
-    private TextView textViewShopName;
-    private Button buttonGoToStoreWebsite;
     private RecyclerView productsBasketRecyclerView;
-    private ProductsInBasketAdapter productsInBasketAdapter;
-    private CheapestShoppingReponse cheapestShoppingResponseRv;
+    private Button goToMainActivityButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.products_in_basket_activity);
 
-        cheapestShoppingResponseRv = (CheapestShoppingReponse) getIntent().getSerializableExtra("productsInBasket");
+        CheapestShoppingReponse cheapestShoppingResponseRv = (CheapestShoppingReponse) getIntent().getSerializableExtra("productsInBasket");
         List<ParsedProductDTO> parsedProductDTOS = cheapestShoppingResponseRv.getProducts();
 
         initComponents();
 
-        productsInBasketAdapter = new ProductsInBasketAdapter(this, parsedProductDTOS);
+        ProductsInBasketAdapter productsInBasketAdapter = new ProductsInBasketAdapter(this, parsedProductDTOS);
         productsBasketRecyclerView.setAdapter(productsInBasketAdapter);
         productsBasketRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -41,11 +38,16 @@ public class ProductsInBasketActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        goToMainActivityButton.setOnClickListener(view ->
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void initComponents() {
-        textViewShopName = findViewById(R.id.textViewShopName);
         productsBasketRecyclerView = findViewById(R.id.products_in_basket_rv);
-        // buttonGoToStoreWebsite = findViewById(R.id.buttonGoToStore);
+        goToMainActivityButton = findViewById(R.id.goToMainActivityButton);
     }
 }

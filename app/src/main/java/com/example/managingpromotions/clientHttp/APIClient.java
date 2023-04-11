@@ -8,7 +8,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 public class APIClient {
 
     private static final Retrofit retrofit = null;
-    private static final String BASE_URL = "http://172.30.96.1:8080";
+    private static final String BASE_URL = "http://172.17.176.1:8080";
 
     public static Retrofit getClient() {
 

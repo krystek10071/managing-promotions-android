@@ -14,6 +14,7 @@ import javax.validation.Valid;
 import io.swagger.annotations.ApiModelProperty;
 
 public class CheapestShoppingReponse implements Serializable {
+
     @JsonProperty("shopName")
     private String shopName;
 
@@ -27,6 +28,10 @@ public class CheapestShoppingReponse implements Serializable {
     @Valid
     private List<ParsedProductDTO> products = null;
 
+    @JsonProperty("unSelectedProducts")
+    @Valid
+    private List<String> unSelectedProducts = null;
+
     public CheapestShoppingReponse shopName(String shopName) {
         this.shopName = shopName;
         return this;
@@ -34,7 +39,6 @@ public class CheapestShoppingReponse implements Serializable {
 
     /**
      * Get shopName
-     *
      * @return shopName
      */
     @ApiModelProperty(value = "")
@@ -55,7 +59,6 @@ public class CheapestShoppingReponse implements Serializable {
 
     /**
      * Get groceryListId
-     *
      * @return groceryListId
      */
     @ApiModelProperty(value = "")
@@ -76,7 +79,6 @@ public class CheapestShoppingReponse implements Serializable {
 
     /**
      * Get price
-     *
      * @return price
      */
     @ApiModelProperty(value = "")
@@ -106,7 +108,6 @@ public class CheapestShoppingReponse implements Serializable {
 
     /**
      * Get products
-     *
      * @return products
      */
     @ApiModelProperty(value = "")
@@ -119,6 +120,34 @@ public class CheapestShoppingReponse implements Serializable {
 
     public void setProducts(List<ParsedProductDTO> products) {
         this.products = products;
+    }
+
+    public CheapestShoppingReponse unSelectedProducts(List<String> unSelectedProducts) {
+        this.unSelectedProducts = unSelectedProducts;
+        return this;
+    }
+
+    public CheapestShoppingReponse addUnSelectedProductsItem(String unSelectedProductsItem) {
+        if (this.unSelectedProducts == null) {
+            this.unSelectedProducts = new ArrayList<String>();
+        }
+        this.unSelectedProducts.add(unSelectedProductsItem);
+        return this;
+    }
+
+    /**
+     * Get unSelectedProducts
+     * @return unSelectedProducts
+     */
+    @ApiModelProperty(value = "")
+
+
+    public List<String> getUnSelectedProducts() {
+        return unSelectedProducts;
+    }
+
+    public void setUnSelectedProducts(List<String> unSelectedProducts) {
+        this.unSelectedProducts = unSelectedProducts;
     }
 
 
@@ -134,12 +163,13 @@ public class CheapestShoppingReponse implements Serializable {
         return Objects.equals(this.shopName, cheapestShoppingReponse.shopName) &&
                 Objects.equals(this.groceryListId, cheapestShoppingReponse.groceryListId) &&
                 Objects.equals(this.price, cheapestShoppingReponse.price) &&
-                Objects.equals(this.products, cheapestShoppingReponse.products);
+                Objects.equals(this.products, cheapestShoppingReponse.products) &&
+                Objects.equals(this.unSelectedProducts, cheapestShoppingReponse.unSelectedProducts);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(shopName, groceryListId, price, products);
+        return Objects.hash(shopName, groceryListId, price, products, unSelectedProducts);
     }
 
     @Override
@@ -151,6 +181,7 @@ public class CheapestShoppingReponse implements Serializable {
         sb.append("    groceryListId: ").append(toIndentedString(groceryListId)).append("\n");
         sb.append("    price: ").append(toIndentedString(price)).append("\n");
         sb.append("    products: ").append(toIndentedString(products)).append("\n");
+        sb.append("    unSelectedProducts: ").append(toIndentedString(unSelectedProducts)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -166,4 +197,3 @@ public class CheapestShoppingReponse implements Serializable {
         return o.toString().replace("\n", "\n    ");
     }
 }
-
