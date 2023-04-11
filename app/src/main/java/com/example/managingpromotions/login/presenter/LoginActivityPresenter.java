@@ -13,6 +13,7 @@ import retrofit2.Response;
 
 public class LoginActivityPresenter {
 
+    private static final String ERROR_MESSAGE = "Wystąpił problem z logowaniem sprawdź login lub hasło";
     private final LoginActivityView loginActivityView;
 
     public LoginActivityPresenter(LoginActivityView loginActivityView) {
@@ -34,10 +35,8 @@ public class LoginActivityPresenter {
                     loginActivityView.displayMessage(message);
                     loginActivityView.invokeMainActivity();
                 } else {
-
-                    String errorMassage = "ERROR HTTP CODE: " + response.code();
-                    Log.e("ERROR", errorMassage);
-                    loginActivityView.displayMessage(errorMassage);
+                    Log.e("ERROR", ERROR_MESSAGE);
+                    loginActivityView.displayMessage(ERROR_MESSAGE);
                 }
             }
 
