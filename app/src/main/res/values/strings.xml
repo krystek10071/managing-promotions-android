@@ -41,6 +41,5 @@
     <string name="passsword_confirmation">powtórzone hasło</string>
     <string name="create_account">Utwórz konto</string>
     <string name="GoToMainActivity">Przejdź do głównej aktywności</string>
-    <string name="product_name">nazwa produktu</string>
     <string name="button_newsletter_name">Button</string>
 </resources>

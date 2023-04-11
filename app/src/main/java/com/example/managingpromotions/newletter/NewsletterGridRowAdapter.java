@@ -10,17 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
+import com.example.managingpromotions.model.LetterNewsletterResponseDTO;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class NewsletterGridRowAdapter extends RecyclerView.Adapter<NewsletterGridRowAdapter.ButtonViewHolder> {
     private final Context context;
-    private final ArrayList<String> buttonLabels;
+    private final List<LetterNewsletterResponseDTO> newsletterResponseDTS;
     private final ButtonClickListener buttonClickListener;
 
-    public NewsletterGridRowAdapter(Context context, ArrayList<String> buttonLabels, ButtonClickListener buttonClickListener) {
+    public NewsletterGridRowAdapter(Context context, List<LetterNewsletterResponseDTO> newsletterResponseDTOS,
+                                    ButtonClickListener buttonClickListener) {
         this.context = context;
-        this.buttonLabels = buttonLabels;
+        this.newsletterResponseDTS = newsletterResponseDTOS;
         this.buttonClickListener = buttonClickListener;
     }
 
@@ -33,14 +35,19 @@ public class NewsletterGridRowAdapter extends RecyclerView.Adapter<NewsletterGri
 
     @Override
     public void onBindViewHolder(@NonNull ButtonViewHolder holder, int position) {
-        String label = buttonLabels.get(position);
-        holder.button.setText(label);
-        holder.button.setOnClickListener(v -> buttonClickListener.onButtonClick(label));
+        LetterNewsletterResponseDTO newsletter = newsletterResponseDTS.get(position);
+        holder.button.setText("label");
+        holder.button.setOnClickListener(v -> buttonClickListener.onButtonClick("label"));
     }
 
     @Override
     public int getItemCount() {
-        return buttonLabels.size();
+
+        if (newsletterResponseDTS == null || newsletterResponseDTS.isEmpty()) {
+            return 0;
+        }
+
+        return newsletterResponseDTS.size();
     }
 
     public interface ButtonClickListener {

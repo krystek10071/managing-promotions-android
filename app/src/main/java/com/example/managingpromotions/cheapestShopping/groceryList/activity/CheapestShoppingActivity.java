@@ -31,7 +31,6 @@ public class CheapestShoppingActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grocery_list_activity);
-
         init();
 
         groceryListPresenter = new GroceryListPresenterImpl(this);

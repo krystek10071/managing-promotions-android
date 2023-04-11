@@ -103,7 +103,7 @@
         </activity>
 
         <activity
-            android:name=".newletter.ButtonGridActivity"
+            android:name=".newletter.NewsletterGridActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

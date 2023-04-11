@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.managingpromotions.addGrocery.activity.AddGroceryListActivityView;
 import com.example.managingpromotions.cheapestShopping.groceryList.activity.CheapestShoppingActivity;
-import com.example.managingpromotions.newletter.ButtonGridActivity;
+import com.example.managingpromotions.newletter.NewsletterGridActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         promotionalNewsletterButton.setOnClickListener(view -> {
-            Intent intent = new Intent(this, ButtonGridActivity.class);
+            Intent intent = new Intent(this, NewsletterGridActivity.class);
             startActivity(intent);
         });
     }
