@@ -1,12 +1,15 @@
 package com.example.managingpromotions.newletter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
@@ -36,8 +39,10 @@ public class NewsletterGridRowAdapter extends RecyclerView.Adapter<NewsletterGri
     @Override
     public void onBindViewHolder(@NonNull ButtonViewHolder holder, int position) {
         LetterNewsletterResponseDTO newsletter = newsletterResponseDTS.get(position);
-        holder.button.setText("label");
-        holder.button.setOnClickListener(v -> buttonClickListener.onButtonClick("label"));
+
+        setButtonLogo(newsletter, holder);
+       // holder.button.setText("label111");
+        //holder.button.setOnClickListener(v -> buttonClickListener.onButtonClick("label"));
     }
 
     @Override
@@ -56,12 +61,17 @@ public class NewsletterGridRowAdapter extends RecyclerView.Adapter<NewsletterGri
 
     public static class ButtonViewHolder extends RecyclerView.ViewHolder {
 
-        public Button button;
+        public ImageButton imageButton;
 
         public ButtonViewHolder(@NonNull View itemView) {
             super(itemView);
-            button = itemView.findViewById(R.id.button_newsletter_name);
+            imageButton = itemView.findViewById(R.id.button_newsletter_name);
         }
+    }
+
+    private void setButtonLogo(LetterNewsletterResponseDTO newsletter, ButtonViewHolder holder) {
+
+        holder.imageButton.setBackgroundResource(R.drawable.groszek_logo);
     }
 }
 
