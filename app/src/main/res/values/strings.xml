@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">discount manager</string>
+    <string name="app_name">Optymalizator kosztów zakupów</string>
     <string name="form">Dodaj listę zakupów</string>
     <string name="AddGroceryButton">Dodaj listę zakupów</string>
     <string name="AddProductButton">Dodaj Product</string>
@@ -41,4 +41,7 @@
     <string name="passsword_confirmation">powtórzone hasło</string>
     <string name="create_account">Utwórz konto</string>
     <string name="GoToMainActivity">Przejdź do głównej aktywności</string>
+    <string name="button_newsletter_name">Button</string>
+    <string name="dsdsd">dsdsd</string>
+    <string name="todo">todo</string>
 </resources>

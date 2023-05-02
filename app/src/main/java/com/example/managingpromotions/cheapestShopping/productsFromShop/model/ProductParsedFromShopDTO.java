@@ -11,7 +11,7 @@ import javax.validation.Valid;
 
 import io.swagger.annotations.ApiModelProperty;
 
-public class ProductParsedFromShopDTO  implements Serializable {
+public class ProductParsedFromShopDTO implements Serializable {
     @JsonProperty("shopName")
     private ShopEnum shopName;
 
@@ -32,6 +32,7 @@ public class ProductParsedFromShopDTO  implements Serializable {
 
     /**
      * Get shopName
+     *
      * @return shopName
      */
     @ApiModelProperty(value = "")
@@ -53,6 +54,7 @@ public class ProductParsedFromShopDTO  implements Serializable {
 
     /**
      * Get productFromGroceryList
+     *
      * @return productFromGroceryList
      */
     @ApiModelProperty(value = "")
@@ -73,6 +75,7 @@ public class ProductParsedFromShopDTO  implements Serializable {
 
     /**
      * Get groceryListId
+     *
      * @return groceryListId
      */
     @ApiModelProperty(value = "")
@@ -101,6 +104,7 @@ public class ProductParsedFromShopDTO  implements Serializable {
 
     /**
      * Get products
+     *
      * @return products
      */
     @ApiModelProperty(value = "")

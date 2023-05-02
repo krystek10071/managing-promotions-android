@@ -1,14 +1,14 @@
 package com.example.managingpromotions;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.managingpromotions.addGrocery.activity.AddGroceryListActivityView;
 import com.example.managingpromotions.cheapestShopping.groceryList.activity.CheapestShoppingActivity;
-import com.example.managingpromotions.promotionalNewslaters.PromotionalNewsletterActivity;
+import com.example.managingpromotions.newletter.NewsletterGridActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         promotionalNewsletterButton.setOnClickListener(view -> {
-            Intent intent = new Intent(this, PromotionalNewsletterActivity.class);
+            Intent intent = new Intent(this, NewsletterGridActivity.class);
             startActivity(intent);
         });
     }
