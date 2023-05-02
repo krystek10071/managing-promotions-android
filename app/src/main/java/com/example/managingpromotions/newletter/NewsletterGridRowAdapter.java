@@ -1,15 +1,12 @@
 package com.example.managingpromotions.newletter;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
@@ -42,7 +39,7 @@ public class NewsletterGridRowAdapter extends RecyclerView.Adapter<NewsletterGri
 
         setButtonLogo(newsletter, holder);
        // holder.button.setText("label111");
-        //holder.button.setOnClickListener(v -> buttonClickListener.onButtonClick("label"));
+        holder.imageButton.setOnClickListener(v -> buttonClickListener.onButtonClick("label"));
     }
 
     @Override
@@ -71,7 +68,16 @@ public class NewsletterGridRowAdapter extends RecyclerView.Adapter<NewsletterGri
 
     private void setButtonLogo(LetterNewsletterResponseDTO newsletter, ButtonViewHolder holder) {
 
-        holder.imageButton.setBackgroundResource(R.drawable.groszek_logo);
+        switch (newsletter.getShopName()) {
+            case ELECLERC:
+                holder.imageButton.setBackgroundResource(R.drawable.eleclerc_logo);
+                break;
+            case GROSZEK:
+                holder.imageButton.setBackgroundResource(R.drawable.groszek_logo);
+                break;
+            default:
+                System.out.println("Invalid choice");
+        }
     }
 }
 
