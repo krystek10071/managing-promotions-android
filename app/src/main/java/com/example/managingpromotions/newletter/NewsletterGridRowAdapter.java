@@ -38,8 +38,7 @@ public class NewsletterGridRowAdapter extends RecyclerView.Adapter<NewsletterGri
         LetterNewsletterResponseDTO newsletter = newsletterResponseDTS.get(position);
 
         setButtonLogo(newsletter, holder);
-       // holder.button.setText("label111");
-        holder.imageButton.setOnClickListener(v -> buttonClickListener.onButtonClick("label"));
+        holder.imageButton.setOnClickListener(v -> buttonClickListener.openActivityWithNewsletter(newsletter.getId()));
     }
 
     @Override
@@ -53,7 +52,7 @@ public class NewsletterGridRowAdapter extends RecyclerView.Adapter<NewsletterGri
     }
 
     public interface ButtonClickListener {
-        void onButtonClick(String label);
+        void openActivityWithNewsletter(Long id);
     }
 
     public static class ButtonViewHolder extends RecyclerView.ViewHolder {
