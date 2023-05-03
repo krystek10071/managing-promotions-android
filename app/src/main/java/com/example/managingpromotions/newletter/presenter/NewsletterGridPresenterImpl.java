@@ -15,13 +15,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsletterPresenterImpl {
+public class NewsletterGridPresenterImpl {
 
     private final NewsletterGridActivity newsletterGridActivity;
     private final LetterNewsletterAPI letterNewsletterAPI;
 
 
-    public NewsletterPresenterImpl(NewsletterGridActivity newsletterGridActivity) {
+    public NewsletterGridPresenterImpl(NewsletterGridActivity newsletterGridActivity) {
         this.newsletterGridActivity = newsletterGridActivity;
         letterNewsletterAPI = APIClient.getClient().create(LetterNewsletterAPI.class);
     }
