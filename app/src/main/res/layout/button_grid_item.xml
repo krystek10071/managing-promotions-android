@@ -13,8 +13,6 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/black"
-        android:src="@drawable/eleclerc_logo"
         android:textSize="18sp"
         android:contentDescription="@string/todo" />
 

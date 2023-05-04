@@ -1,12 +1,17 @@
 package com.example.managingpromotions.newletter;
 
+
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
+import androidx.core.graphics.drawable.RoundedBitmapDrawable;
+import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.managingpromotions.R;
@@ -69,14 +74,23 @@ public class NewsletterGridRowAdapter extends RecyclerView.Adapter<NewsletterGri
 
         switch (newsletter.getShopName()) {
             case ELECLERC:
-                holder.imageButton.setBackgroundResource(R.drawable.eleclerc_logo);
+                holder.imageButton.setImageDrawable(getRoundedDrawable(context, R.drawable.eleclerc_logo));
                 break;
             case GROSZEK:
-                holder.imageButton.setBackgroundResource(R.drawable.groszek_logo);
+                holder.imageButton.setImageDrawable(getRoundedDrawable(context, R.drawable.groszek_logo_1));
                 break;
             default:
                 System.out.println("Invalid choice");
         }
+
+    }
+
+    private RoundedBitmapDrawable getRoundedDrawable(Context context, int drawableId) {
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), drawableId);
+        RoundedBitmapDrawable roundedBitmapDrawable = RoundedBitmapDrawableFactory.create(context.getResources(), bitmap);
+        roundedBitmapDrawable.setCornerRadius(50);
+        roundedBitmapDrawable.setAntiAlias(true);
+        return roundedBitmapDrawable;
     }
 }
 
