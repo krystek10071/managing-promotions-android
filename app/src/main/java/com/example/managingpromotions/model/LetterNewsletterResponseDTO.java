@@ -22,6 +22,12 @@ public class LetterNewsletterResponseDTO implements Serializable {
     @JsonProperty("extension")
     private String extension;
 
+    @JsonProperty("startDate")
+    private String startDate;
+
+    @JsonProperty("endDate")
+    private String endDate;
+
     public LetterNewsletterResponseDTO id(Long id) {
         this.id = id;
         return this;
@@ -107,6 +113,48 @@ public class LetterNewsletterResponseDTO implements Serializable {
         this.extension = extension;
     }
 
+    public LetterNewsletterResponseDTO startDate(String startDate) {
+        this.startDate = startDate;
+        return this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return startDate
+     */
+    @ApiModelProperty(value = "")
+
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public LetterNewsletterResponseDTO endDate(String endDate) {
+        this.endDate = endDate;
+        return this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return endDate
+     */
+    @ApiModelProperty(value = "")
+
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -120,12 +168,14 @@ public class LetterNewsletterResponseDTO implements Serializable {
         return Objects.equals(this.id, letterNewsletterResponseDTO.id) &&
                 Objects.equals(this.shopName, letterNewsletterResponseDTO.shopName) &&
                 Objects.equals(this.fileName, letterNewsletterResponseDTO.fileName) &&
-                Objects.equals(this.extension, letterNewsletterResponseDTO.extension);
+                Objects.equals(this.extension, letterNewsletterResponseDTO.extension) &&
+                Objects.equals(this.startDate, letterNewsletterResponseDTO.startDate) &&
+                Objects.equals(this.endDate, letterNewsletterResponseDTO.endDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, shopName, fileName, extension);
+        return Objects.hash(id, shopName, fileName, extension, startDate, endDate);
     }
 
     @Override
@@ -137,6 +187,8 @@ public class LetterNewsletterResponseDTO implements Serializable {
         sb.append("    shopName: ").append(toIndentedString(shopName)).append("\n");
         sb.append("    fileName: ").append(toIndentedString(fileName)).append("\n");
         sb.append("    extension: ").append(toIndentedString(extension)).append("\n");
+        sb.append("    startDate: ").append(toIndentedString(startDate)).append("\n");
+        sb.append("    endDate: ").append(toIndentedString(endDate)).append("\n");
         sb.append("}");
         return sb.toString();
     }
@@ -152,3 +204,4 @@ public class LetterNewsletterResponseDTO implements Serializable {
         return o.toString().replace("\n", "\n    ");
     }
 }
+
