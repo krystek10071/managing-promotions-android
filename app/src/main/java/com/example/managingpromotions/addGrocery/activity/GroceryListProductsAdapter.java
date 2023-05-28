@@ -40,7 +40,6 @@ public class GroceryListProductsAdapter extends RecyclerView.Adapter<GroceryList
     @NonNull
     @Override
     public ProductHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.recycler_view_grocery_list_row, parent, false );
 
@@ -49,18 +48,15 @@ public class GroceryListProductsAdapter extends RecyclerView.Adapter<GroceryList
 
     @Override
     public void onBindViewHolder(@NonNull ProductHolder holder, int position) {
-
         holder.productNameTextView.setText(groceryListProductDTOS.get(position).getName());
         holder.amountTextView.setText(String.valueOf(groceryListProductDTOS.get(position).getAmount()));
     }
 
     @Override
     public int getItemCount() {
-
         if(groceryListProductDTOS == null || groceryListProductDTOS.isEmpty()){
             return 0;
         }
-
         return groceryListProductDTOS.size();
     }
 }

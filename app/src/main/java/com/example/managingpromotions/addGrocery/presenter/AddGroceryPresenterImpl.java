@@ -28,7 +28,6 @@ public class AddGroceryPresenterImpl {
         GroceryListAPI groceryListAPI = APIClient.getClient().create(GroceryListAPI.class);
         //todo implement get UserNameFromToken
         groceryListDTO.setUserLogin("kris");
-
         Call<CreateIdResponseDTO> callAddGroceryList = groceryListAPI.createGroceryList(groceryListDTO);
 
         callAddGroceryList.enqueue(new Callback<CreateIdResponseDTO>() {

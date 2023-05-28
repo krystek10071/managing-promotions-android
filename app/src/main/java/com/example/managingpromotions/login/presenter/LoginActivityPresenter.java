@@ -25,7 +25,6 @@ public class LoginActivityPresenter {
         AccountAPI accountAPI = APIClient.getClient().create(AccountAPI.class);
 
         Call<Void> callLogin = accountAPI.login(loginCredentials);
-
         callLogin.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
@@ -39,7 +38,6 @@ public class LoginActivityPresenter {
                     loginActivityView.displayMessage(ERROR_MESSAGE);
                 }
             }
-
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Log.e("ERROR", t.getMessage());
