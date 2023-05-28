@@ -40,7 +40,6 @@ public class AddGroceryListActivityView extends AppCompatActivity {
         initPresenter();
 
         groceryListProductsAdapter = new GroceryListProductsAdapter(productDTOS, this);
-
         recyclerView.setAdapter(groceryListProductsAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
